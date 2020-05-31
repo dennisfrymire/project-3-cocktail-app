@@ -6,4 +6,4 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('#root'));

@@ -8,3 +8,10 @@ const cocktailSchema = new mongoose.Schema({
 const Cocktails = mongoose.model("Cocktails", cocktailSchema);
 
 module.exports = Cocktails;
+
+
+//Search options
+//name, first letter, ingredient, cocktail id, ingrdient id, random, alcoholic vs nonalcoholic
+
+//object
+//strDrink, strTag, strAlcoholic,, strGlass, strInstruction, strIngredient1, 2,3 etc, strmeasure1, 2, etc, strDrinkThumb, strCategory

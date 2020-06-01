@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 
 const cocktailSchema = new mongoose.Schema({
     name: String,
-    spirit: String,
+    ingredient: Array,
+    measure: Number,
+    glass: String,
+    instruction: String,   
+    img: URL,
+    category:String,
+    tag: String,
+    alcoholic: Boolean
 })
 
 
@@ -15,4 +22,5 @@ module.exports = Cocktails;
 //name, first letter, ingredient, cocktail id, ingredient id, random, alcoholic vs nonalcoholic
 
 //object
+//strDrink, strTag, strAlcoholic,, strGlass, strInstruction, strIngredient1,2,3 etc, strmeasure1, 2, etc, strDrinkThumb, strCategory
 //strDrink, strTag, strAlcoholic, strGlass, strInstruction, strIngredient1, 2, 3 etc, strmeasure1, 2, etc, strDrinkThumb, strCategory

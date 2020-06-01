@@ -1,7 +1,7 @@
 class App extends React.Component {
     render(){
         return (
-            <h1>something</h1>
+            <h1>Cocktail App</h1>
         )
     }
 }

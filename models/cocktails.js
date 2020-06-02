@@ -6,8 +6,8 @@ const cocktailSchema = new mongoose.Schema({
     measure: Number,
     glass: String,
     instruction: String,   
-    img: URL,
-    category:String,
+    img: String,
+    category: String,
     tag: String,
     alcoholic: Boolean
 })

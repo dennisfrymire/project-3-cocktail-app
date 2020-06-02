@@ -3,19 +3,38 @@ class App extends React.Component {
         cocktails: [],
         baseURL: "https://www.thecocktaildb.com/api/json/v1/",
         apikey: "1/",
-        query: "search.php?s=",
+        query: "filter.php?i=",
         ingredient: '',
         searchURL: ""
     }
 
     componentDidMount(){
-        this.getData();
+        this.setState({
+            ingredient: 'lime',
+            searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
+        }, () => {
+            fetch(this.state.searchURL + this.state.ingredient)
+            .then(response => response.json())
+            .then(data => this.setState({cocktails: data}))
+        })
+        // fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        // this.getData();
     }
 
     getData = () => {
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
-        .then(response => response.json())
-        .then(data => this.setState({cocktails: data}))
+        // this.setState({
+        //     ingredient: 'margarita',
+        //     searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
+        // })
+        // console.log(this.state.ingredient)
+        // console.log(this.state.searchURL)
+        // // fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        // fetch(this.state.searchURL + this.state.ingredient)
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data)
+        //     this.setState({cocktails: data})
+        // })
     }
 
     // handleChange = (event) => {
@@ -54,8 +73,10 @@ class App extends React.Component {
                 {/* if cocktails.drinks exists, then print. cocktails.drinks does not exist until after browser loads and half second delay */}
                 {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
                         return (
-                            <h1>{drink.strDrink}</h1>
-                            
+                            <div>
+                            <p>{drink.strDrink}</p>
+                            <img src={drink.strDrinkThumb}></img>
+                            </div>
                 
                         )
                     })

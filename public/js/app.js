@@ -16,6 +16,9 @@ class App extends React.Component {
         .then(response => response.json())
         .then(data => this.setState({cocktails: data}))
     }
+
+
+    
     render(){
         // this for some reason prints out 2 console logs, one of the cocktails arr and one of just an object containing 5 drinks
         // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again

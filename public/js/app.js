@@ -129,7 +129,7 @@ class CommunityCocktail extends React.Component {
     toggleSelectCocktail = () => {
         this.setState({selectCocktail: !this.state.selectCocktail})
     }
-        
+
     showCocktail = (id) => {
         this.setState({selectCocktail: !this.state.selectCocktail})
         fetch(`/cocktails/${id}`)
@@ -139,21 +139,9 @@ class CommunityCocktail extends React.Component {
     }
 
     render(){
+        // console.log(this.state.communityCocktails)
         return (
             <div>
-            <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
-            {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
-                            return (
-                                <div>
-                                <p>{drink.strDrink}</p>
-                                <img src={drink.strDrinkThumb}></img>
-                                <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
-                                {/* <button onSubmit={(event) => this.updateCocktail(drink._id, index)}>Update</button> */}
-                                <Edit updateCocktail={this.updateCocktail}/>
-                                </div>
-                            )
-                        })
-                    }
                 {this.state.selectCocktail &&
                     <div>
                         <p>{this.state.currentDrink.strDrink}</p>
@@ -164,7 +152,7 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                         </ul>
-                        <button onClick={() => this.toggleSelectCocktail()}>Back</button>
+                        <button onClick={this.toggleSelectCocktail}>Go Back</button>
                     </div>
                 }
 

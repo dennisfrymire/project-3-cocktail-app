@@ -1,3 +1,4 @@
+
 class NewDrinkForm extends React.Component {
     state = {
         strDrink: '',
@@ -27,7 +28,8 @@ class NewDrinkForm extends React.Component {
 class CommunityCocktail extends React.Component {
     state = {
         communityCocktails: [],
-
+        selectCocktail: false,
+        currentDrink: {}
     }
 
     handleSubmit = (event, newFormState) => {
@@ -75,22 +77,47 @@ class CommunityCocktail extends React.Component {
             })
     }
 
+    showCocktail = (id) => {
+        this.setState({selectCocktail: !this.state.selectCocktail})
+        fetch(`/cocktails/${id}`)
+            .then(response => response.json())
+            .then(data => this.setState({currentDrink: data})
+            )
+    }
+
     render(){
         // console.log(this.state.communityCocktails)
         return (
             <div>
-            <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
-            {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
-                            return (
-                                <div>
-                                <p>{drink.strDrink}</p>
-                                <img src={drink.strDrinkThumb}></img>
-                                <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
-                                </div>
-                    
-                            )
-                        })
-                    }
+                {this.state.selectCocktail &&
+                    <div>
+                        <p>{this.state.currentDrink.strDrink}</p>
+                        <img src={this.state.currentDrink.strDrinkThumb}></img>
+                        <ul>
+                            <li>{this.state.currentDrink.strIngredient1}</li>
+                            <li>{this.state.currentDrink.strIngredient2}</li>
+                            <li>{this.state.currentDrink.strIngredient3}</li>
+                            <li>{this.state.currentDrink.strIngredient4}</li>
+                        </ul>
+                    </div>
+                }
+
+                {this.state.selectCocktail === false &&
+                <div>
+                <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
+                {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
+                                return (
+                                    <div>
+                                    <p>{drink.strDrink}</p>
+                                    <img src={drink.strDrinkThumb}></img>
+                                    <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
+                                    <button onClick={() => this.showCocktail(drink._id)}>Show</button>
+                                    </div>
+                        
+                                )
+                            })
+                        }
+                </div>}
             </div>
         )
     }

@@ -64,29 +64,28 @@ class CommunityCocktail extends React.Component {
             .then(data => this.setState({communityCocktails: data}))
     }
 
-    // deleteCocktail = (id, indexOfItemInArray) => {
-    //     console.log(this.states.communityCocktails)
-    //     fetch(`/cocktails/${id}`, {
-    //         method: "DELETE"
-    //     }).then(()=>{
-    //         this.setState({
-    //             cocktails:[
-    //                 ...this.state.communityCocktails.slice(0,indexOfItemInArray), ...this.state.communityCocktails.slice(indexOfItemInArray +1)
-    //             ]
-    //         })
-    //     })
-    // }
+    deleteCocktail = (id, indexOfItemInArray) => {
+        fetch(`/cocktails/${id}`, {method: "DELETE"})
+            .then(()=>{
+                this.setState({
+                    cocktails:[
+                        ...this.state.communityCocktails.slice(0,indexOfItemInArray), ...this.state.communityCocktails.slice(indexOfItemInArray +1)
+                    ]
+                })
+            })
+    }
 
     render(){
+        // console.log(this.state.communityCocktails)
         return (
             <div>
             <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
-            {this.state.communityCocktails && this.state.communityCocktails.map(drink => {
+            {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
                             return (
                                 <div>
                                 <p>{drink.strDrink}</p>
                                 <img src={drink.strDrinkThumb}></img>
-                                {/* <button>{this.deleteCocktail}Delete</button> */}
+                                <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
                                 </div>
                     
                             )

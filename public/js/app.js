@@ -77,6 +77,10 @@ class CommunityCocktail extends React.Component {
             })
     }
 
+    toggleSelectCocktail = () => {
+        this.setState({selectCocktail: !this.state.selectCocktail})
+    }
+
     showCocktail = (id) => {
         this.setState({selectCocktail: !this.state.selectCocktail})
         fetch(`/cocktails/${id}`)
@@ -86,7 +90,6 @@ class CommunityCocktail extends React.Component {
     }
 
     render(){
-        // console.log(this.state.communityCocktails)
         return (
             <div>
                 {this.state.selectCocktail &&
@@ -99,6 +102,7 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                         </ul>
+                        <button onClick={() => this.toggleSelectCocktail()}>Back</button>
                     </div>
                 }
 

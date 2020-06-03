@@ -110,7 +110,19 @@ class CommunityCocktail extends React.Component {
                 })
             })
     }
-    
+
+    toggleSelectCocktail = () => {
+        this.setState({selectCocktail: !this.state.selectCocktail})
+    }
+
+    showCocktail = (id) => {
+        this.setState({selectCocktail: !this.state.selectCocktail})
+        fetch(`/cocktails/${id}`)
+            .then(response => response.json())
+            .then(data => this.setState({currentDrink: data})
+            )
+    }
+
     updateCocktail = (event, communityCocktails) => {
         event.preventDefault();
         alert(event)
@@ -125,18 +137,6 @@ class CommunityCocktail extends React.Component {
         }).then(response=>response.json()).then(data=>{
             this.getData()
         })}
-
-    toggleSelectCocktail = () => {
-        this.setState({selectCocktail: !this.state.selectCocktail})
-    }
-
-    showCocktail = (id) => {
-        this.setState({selectCocktail: !this.state.selectCocktail})
-        fetch(`/cocktails/${id}`)
-            .then(response => response.json())
-            .then(data => this.setState({currentDrink: data})
-            )
-    }
 
     render(){
         // console.log(this.state.communityCocktails)

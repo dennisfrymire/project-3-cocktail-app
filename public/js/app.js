@@ -64,6 +64,19 @@ class CommunityCocktail extends React.Component {
             .then(data => this.setState({communityCocktails: data}))
     }
 
+    // deleteCocktail = (id, indexOfItemInArray) => {
+    //     console.log(this.states.communityCocktails)
+    //     fetch(`/cocktails/${id}`, {
+    //         method: "DELETE"
+    //     }).then(()=>{
+    //         this.setState({
+    //             cocktails:[
+    //                 ...this.state.communityCocktails.slice(0,indexOfItemInArray), ...this.state.communityCocktails.slice(indexOfItemInArray +1)
+    //             ]
+    //         })
+    //     })
+    // }
+
     render(){
         return (
             <div>
@@ -73,6 +86,7 @@ class CommunityCocktail extends React.Component {
                                 <div>
                                 <p>{drink.strDrink}</p>
                                 <img src={drink.strDrinkThumb}></img>
+                                {/* <button>{this.deleteCocktail}Delete</button> */}
                                 </div>
                     
                             )

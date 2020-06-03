@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', (req, res) => {
+    Cocktails.findById(req.params.id, (err, foundCocktail) => {
+        res.json(foundCocktail);
+    })
+})
+
 router.post('/', (req, res) => {
     Cocktails.create(req.body, (err, createdCocktail) => {
         res.json(createdCocktail);

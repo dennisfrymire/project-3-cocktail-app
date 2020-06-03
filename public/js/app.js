@@ -13,7 +13,7 @@ class App extends React.Component {
     }
 
     getData = () => {
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
         .then(response => response.json())
         .then(data => this.setState({cocktails: data}))
     }

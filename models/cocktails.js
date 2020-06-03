@@ -1,15 +1,22 @@
 const mongoose = require('mongoose');
 
 const cocktailSchema = new mongoose.Schema({
-    name: String,
-    ingredient: Array,
-    measure: Number,
-    glass: String,
-    instruction: String,   
-    img: String,
-    category: String,
-    tag: String,
-    alcoholic: Boolean
+    strDrink: String,
+    strIngredient1: String,
+    striMeasure1: String,
+    strIngredient2: String,
+    striMeasure2: String,
+    strIngredient3: String,
+    striMeasure3: String,
+    strIngredient4: String,
+    strMeasure4: String,
+    strIngredient5: String,
+    strMeasure5: String,
+    strGlass: String,
+    strInstructions: String,   
+    strDrinkThumb: String,
+    strTags: String,
+    strAlcoholic: Boolean
 })
 
 

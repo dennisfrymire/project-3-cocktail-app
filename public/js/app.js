@@ -82,6 +82,18 @@ class CommunityCocktail extends React.Component {
                 this.setState({
                     communityCocktails: [...this.state.communityCocktails, newDrink],
                     strDrink: '',
+                    strIngredient1: '',
+                    strMeasure1: '',
+                    strIngredient2: '',
+                    strMeasure2: '',
+                    strIngredient3: '',
+                    strMeasure3: '',
+                    strIngredient4: '',
+                    strMeasure4: '',
+                    strIngredient5: '',
+                    strMeasure5: '',
+                    strGlass: '',
+                    strInstructions: '',
                     strDrinkThumb: ''
                 })
                 // console.log(this.state.cocktails)
@@ -250,15 +262,15 @@ class App extends React.Component {
                     {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
                             return (
                                 <div>
-                                <h3>Try this next time:</h3>
+                                <h3>Try this at your next party:</h3>
                                 <p>{drink.strDrink}</p>
                                 <img src={drink.strDrinkThumb}></img>
                                 <p>Ingredients:</p>
-                                    <p>{drink.strIngredient1}  {drink.strMeasure1}</p>
-                                    <p>{drink.strIngredient2}  {drink.strMeasure2}</p>
-                                    <p>{drink.strIngredient3}  {drink.strMeasure3}</p>
-                                    <p>{drink.strIngredient4}  {drink.strMeasure4}</p>
-                                    <p>{drink.strIngredient5}  {drink.strMeasure5}</p>
+                                    <p>{drink.strMeasure1} {drink.strIngredient1}  </p>
+                                    <p>{drink.strMeasure2} {drink.strIngredient2}  </p>
+                                    <p>{drink.strMeasure3} {drink.strIngredient3}  </p>
+                                    <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
+                                    <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                     <p>{drink.strInstructions}</p>
                                 </div>
                     

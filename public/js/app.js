@@ -59,6 +59,7 @@ class CommunityCocktail extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({communityCocktails: data}))
     }
+
     render(){
         return (
             <div>
@@ -146,27 +147,27 @@ class App extends React.Component {
     //     })
     // }
 
-    handleSubmit = (event, newFormState) => {
-        event.preventDefault();
-        fetch('/cocktails', {
-            body: JSON.stringify(newFormState),
-            method: "POST",
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.json())
-            .then(newDrink => {
-                // newDrink.strDrink = newFormState.strDrink
-                // newDrink.strDrinkThumb = newFormState.strDrinkThumb
-                this.setState({
-                    cocktails: {drinks: [...this.state.cocktails.drinks, newDrink]},
-                    strDrink: '',
-                    strDrinkThumb: ''
-                })
-                // console.log(this.state.cocktails)
-            })
-    }
+    // handleSubmit = (event, newFormState) => {
+    //     event.preventDefault();
+    //     fetch('/cocktails', {
+    //         body: JSON.stringify(newFormState),
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json, text/plain, */*',
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }).then(response => response.json())
+    //         .then(newDrink => {
+    //             // newDrink.strDrink = newFormState.strDrink
+    //             // newDrink.strDrinkThumb = newFormState.strDrinkThumb
+    //             this.setState({
+    //                 cocktails: {drinks: [...this.state.cocktails.drinks, newDrink]},
+    //                 strDrink: '',
+    //                 strDrinkThumb: ''
+    //             })
+    //             // console.log(this.state.cocktails)
+    //         })
+    // }
 
     swapCommunity = () => {
         this.setState({
@@ -182,7 +183,7 @@ class App extends React.Component {
             <div>
                 {this.state.community &&
                 <div>
-                    <h1>helo</h1>
+                    <h1>Community Posted Cocktails</h1>
                     <CommunityCocktail  />
                     <button onClick={this.swapCommunity}>test</button>
                 </div>

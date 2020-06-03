@@ -79,7 +79,7 @@ class CommunityCocktail extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="container">
             <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
             {this.state.communityCocktails && this.state.communityCocktails.map(drink => {
                             return (
@@ -190,7 +190,7 @@ class App extends React.Component {
         // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again
         // console.log(this.state.cocktails)
         return (
-            <div>
+            <div className="container">
                 {this.state.community &&
                 <div>
                     <h1>Community Posted Cocktails</h1>
@@ -201,12 +201,14 @@ class App extends React.Component {
                 {this.state.community === false &&
 
                 <div>
-                    <h1>Cocktails</h1>
+                    <header>
+                    <h1 className="text-center">Cocktails</h1>
+                    </header>
                     <button onClick={this.swapCommunity}>test</button>
                     {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
                             return (
-                                <div>
-                                <p>{drink.strDrink}</p>
+                                <div className="card" style={{width: "105px"}}>
+                                <h5 className="card-title">{drink.strDrink}</h5>
                                 <img src={drink.strDrinkThumb}></img>
                                 </div>
                     

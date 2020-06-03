@@ -92,8 +92,9 @@ class App extends React.Component {
 
     handleSubmit = (event, newFormState) => {
         event.preventDefault();
+        console.log(newFormState)
         fetch('/cocktails', {
-            body: JSON.stringify({strDrink: this.state.strDrink, strDrinkThumb: this.state.strDrinkThumb}),
+            body: JSON.stringify(newFormState),
             method: "POST",
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -101,21 +102,22 @@ class App extends React.Component {
             }
         }).then(response => response.json())
             .then(newDrink => {
-                newDrink.strDrink = newFormState.strDrink
-                newDrink.strDrinkThumb = newFormState.strDrinkThumb
+                // newDrink.strDrink = newFormState.strDrink
+                // newDrink.strDrinkThumb = newFormState.strDrinkThumb
                 console.log(newDrink)
                 this.setState({
-                    cocktails: [...this.state.cocktails, newDrink],
+                    cocktails: {drinks: [...this.state.cocktails.drinks, newDrink]},
                     strDrink: '',
                     strDrinkThumb: ''
                 })
+                // console.log(this.state.cocktails)
             })
     }
 
     render(){
         // this for some reason prints out 2 console logs, one of the cocktails arr and one of just an object containing 5 drinks
         // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again
-        console.log(this.state.cocktails.drinks)
+        // console.log(this.state.cocktails)
         return (
             <div>
                 <h1>Cocktails</h1>

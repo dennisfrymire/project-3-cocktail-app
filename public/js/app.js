@@ -328,12 +328,7 @@ class App extends React.Component {
                 {this.state.community &&
                 <div>
                     <h1>Community Posted Cocktails</h1>
-<<<<<<< HEAD
-                    <h2>Try these drinks below, and add your own.</h2>
-                    <CommunityCocktail  />
-=======
                     <CommunityCocktail />
->>>>>>> d186a756fc41702856679f624e262d30758773b7
                     <button onClick={this.swapCommunity}>test</button>
                 </div>
                 }

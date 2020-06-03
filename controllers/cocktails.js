@@ -12,14 +12,14 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    Cocktails.create(req.body, (err, createdBookmark) => {
-        res.json(createdBookmark);
+    Cocktails.create(req.body, (err, createdCocktail) => {
+        res.json(createdCocktail);
     })
 })
 
 router.delete('/:id', (req, res) => {
-    Cocktails.findByIdAndDelete(req.params.id, (err, deletedBookmark) => {
-        res.json(deletedBookmark);
+    Cocktails.findByIdAndDelete(req.params.id, (err, deletedCocktail) => {
+        res.json(deletedCocktail);
     })
 })
 
@@ -34,8 +34,8 @@ Cocktails.countDocuments({}, (err, data) => {
   })
 
 router.put('/:id', (req, res) => {
-    Cocktails.findByIdAndUpdate(req.params.id, req.body, (err, updatedBookmark) => {
-        res.json(updatedBookmark);
+    Cocktails.findByIdAndUpdate(req.params.id, req.body, (err, updatedCocktail) => {
+        res.json(updatedCocktail);
     })
 })
 

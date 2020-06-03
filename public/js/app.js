@@ -1,7 +1,19 @@
 class NewDrinkForm extends React.Component {
     state = {
         strDrink: '',
-        strDrinkThumb: ''
+        strDrinkThumb: '',
+        strIngredient1: '',
+        strMeasure1: '',
+        strIngredient2: '',
+        strMeasure2: '',
+        strIngredient3: '',
+        strMeasure3: '',
+        strIngredient4: '',
+        strMeasure4: '',
+        strIngredient5: '',
+        strMeasure5: '',
+        strGlass: '',
+        strInstructions: '',
     }
 
     handleChange = (event) => {
@@ -16,6 +28,28 @@ class NewDrinkForm extends React.Component {
                 <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
                     <label htmlFor='strDrink'>Drink Name</label>
                     <input id='strDrink' type='text' value={this.state.strDrink} onChange={this.handleChange}/>
+                    <label htmlFor='strMeasure1'>Measure</label> 
+                    <input id='strMeasure1' type='text' value={this.state.strMeasure1} onChange={this.handleChange}/>
+                    <label htmlFor='strIngredient1'>Ingredient</label>
+                    <input id='strIngredient1' type='text' value={this.state.strIngredient1} onChange={this.handleChange}/>
+                    <label htmlFor='strMeasure2'>Measure</label> 
+                    <input id='strMeasure2' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                    <label htmlFor='strIngredient2'>Ingredient</label>
+                    <input id='strIngredient2' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                    <label htmlFor='strMeasure3'>Measure</label> 
+                    <input id='strMeasure3' type='text' value={this.state.strMeasure3} onChange={this.handleChange}/>
+                    <label htmlFor='strIngredient3'>Ingredient</label>
+                    <input id='strIngredient3' type='text' value={this.state.strIngredient3} onChange={this.handleChange}/>
+                    <label htmlFor='strMeasure4'>Measure</label> 
+                    <input id='strMeasure4' type='text' value={this.state.strMeasure4} onChange={this.handleChange}/>
+                    <label htmlFor='strIngredient4'>Ingredient</label>
+                    <input id='strIngredient4' type='text' value={this.state.strIngredient4} onChange={this.handleChange}/>
+                    <label htmlFor='strMeasure5'>Measure</label> 
+                    <input id='strMeasure5' type='text' value={this.state.strMeasure5} onChange={this.handleChange}/>
+                    <label htmlFor='strIngredient5'>Ingredient</label>
+                    <input id='strIngredient5' type='text' value={this.state.strIngredient5} onChange={this.handleChange}/>
+                    <label htmlFor='strInstructions'>Instructions</label>
+                    <input id='strInstructions' type='text' value={this.state.strInstructions} onChange={this.handleChange}/>
                     <label htmlFor='strDrinkThumb'>Image Link</label>
                     <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
@@ -202,6 +236,7 @@ class App extends React.Component {
                 {this.state.community &&
                 <div>
                     <h1>Community Posted Cocktails</h1>
+                    <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
                     <button onClick={this.swapCommunity}>test</button>
                 </div>
@@ -210,12 +245,21 @@ class App extends React.Component {
 
                 <div>
                     <h1>Cocktails</h1>
-                    <button onClick={this.swapCommunity}>test</button>
+                    <h2>Find your next favorite drink</h2>
+                    <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
                     {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
                             return (
                                 <div>
+                                <h3>Try this next time:</h3>
                                 <p>{drink.strDrink}</p>
                                 <img src={drink.strDrinkThumb}></img>
+                                <p>Ingredients:</p>
+                                    <p>{drink.strIngredient1}  {drink.strMeasure1}</p>
+                                    <p>{drink.strIngredient2}  {drink.strMeasure2}</p>
+                                    <p>{drink.strIngredient3}  {drink.strMeasure3}</p>
+                                    <p>{drink.strIngredient4}  {drink.strMeasure4}</p>
+                                    <p>{drink.strIngredient5}  {drink.strMeasure5}</p>
+                                    <p>{drink.strInstructions}</p>
                                 </div>
                     
                             )

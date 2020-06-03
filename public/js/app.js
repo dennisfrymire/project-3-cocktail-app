@@ -19,10 +19,44 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strDrinkThumb'>Image Link</label>
                     <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
+                    
                 </form>
         )
     }
 }
+
+class Edit extends React.Component {
+
+    state = {
+        strDrink: '',
+        strDrinkThumb: ''
+    }
+  
+    handleChange = (event) => {
+      this.setState({[event.target.id]:event.target.value})
+      this.props.communityCocktails.strDrink= event.target.value
+    }
+  
+    handleChangeURL = (event) =>{
+      this.setState({[event.target.id]:event.target.value})
+      this.props.communityCocktails.url = event.target.value
+    }
+    
+    render() {
+      console.log(this.props.updateCocktail)
+      return(
+        <form onSubmit={(event) => this.props.updateBookmark(event, this.props.bookmark)}>
+          <label htmlFor="title">Drink</label>
+          <input type="text" value={this.props.communityCocktails.strDrink} id="title" onChange={this.handleChange}/>
+          <label htmlFor="url">URL</label>
+          <input type="url" value={this.props.communityCocktail.strDrinkThumb} id="url" onChange={this.handleChangeURL}/>
+          <input type="submit" />
+        </form>
+      )
+    }
+  }
+  
+  
 
 class CommunityCocktail extends React.Component {
     state = {
@@ -65,28 +99,44 @@ class CommunityCocktail extends React.Component {
     }
 
     deleteCocktail = (id, indexOfItemInArray) => {
-        console.log(this.state.communityCocktails)
-        fetch(`/cocktails/${id}`, {
-            method: "DELETE"
-        }).then(()=>{
-            this.setState({
-                cocktails:[
-                    ...this.state.communityCocktails.slice(0,indexOfItemInArray), ...this.state.communityCocktails.slice(indexOfItemInArray +1)
-                ]
+        fetch(`/cocktails/${id}`, {method: "DELETE"})
+            .then(()=>{
+                this.setState({
+                    communityCocktails:[
+                        ...this.state.communityCocktails.slice(0,indexOfItemInArray), ...this.state.communityCocktails.slice(indexOfItemInArray +1)
+                    ]
+                })
             })
-        })
     }
 
+    updateCocktail = (event, communityCocktails) => {
+        event.preventDefault();
+        alert(event)
+        console.log(communityCocktails);
+        fetch('cocktails/' + communityCocktails._id, {
+            body: JSON.stringify(communityCocktails),
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        }).then(response=>response.json()).then(data=>{
+            this.getData()
+        })}
+
     render(){
+        // console.log(this.state.communityCocktails)
         return (
             <div>
             <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
             {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
                             return (
                                 <div>
-                                    <p>{drink.strDrink}</p>
-                                    <img src={drink.strDrinkThumb}></img>
-                                    <button onClick={()=>this.deleteCocktail(drink._id, index)}>Delete</button>
+                                <p>{drink.strDrink}</p>
+                                <img src={drink.strDrinkThumb}></img>
+                                <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
+                                {/* <button onSubmit={(event) => this.updateCocktail(drink._id, index)}>Update</button> */}
+                                <Edit updateCocktail={this.updateCocktail}/>
                                 </div>
                             )
                         })

@@ -1,19 +1,24 @@
 class App extends React.Component {
     state = {
         cocktails: [],
-        baseURL: "https://www.thecocktaildb.com/api/json/v1/",
-        apikey: "1/",
-        query: "search.php?s=",
+        baseURL: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=/",
+        // apikey: "1/",
+        // query: "search.php?s=",
         ingredient: '',
         searchURL: ""
     }
 
     componentDidMount(){
+        this.setState({
+            ingredient:'margarita',
+            searchURL: this.state.baseURL + this.state.ingredient
+        })
         this.getData();
     }
 
     getData = () => {
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        // fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        fetch(this.state.searchURL)
         .then(response => response.json())
         .then(data => this.setState({cocktails: data}))
     }

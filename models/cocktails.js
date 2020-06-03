@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const cocktailSchema = new mongoose.Schema({
     name: String,
-    ingredient: Array,
+    ingredient: String,
     measure: Number,
     glass: String,
     instruction: String,   

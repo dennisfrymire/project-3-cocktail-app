@@ -54,6 +54,10 @@ class CommunityCocktail extends React.Component {
             })
     }
 
+    componentDidMount(){
+        this.getData();
+    }
+
     getData = () => {
         fetch('/cocktails')
             .then(response => response.json())

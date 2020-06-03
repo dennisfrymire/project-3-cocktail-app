@@ -68,7 +68,7 @@ class CommunityCocktail extends React.Component {
         fetch(`/cocktails/${id}`, {method: "DELETE"})
             .then(()=>{
                 this.setState({
-                    cocktails:[
+                    communityCocktails:[
                         ...this.state.communityCocktails.slice(0,indexOfItemInArray), ...this.state.communityCocktails.slice(indexOfItemInArray +1)
                     ]
                 })

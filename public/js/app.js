@@ -24,6 +24,65 @@ class NewDrinkForm extends React.Component {
     }
 }
 
+class CommunityCocktail extends React.Component {
+    state = {
+        communityCocktails: [],
+
+    }
+
+    handleSubmit = (event, newFormState) => {
+        event.preventDefault();
+        console.log(newFormState)
+        fetch('/cocktails', {
+            body: JSON.stringify(newFormState),
+            method: "POST",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+            .then(newDrink => {
+                // newDrink.strDrink = newFormState.strDrink
+                // newDrink.strDrinkThumb = newFormState.strDrinkThumb
+                console.log(newDrink)
+                this.setState({
+                    communityCocktails: [...this.state.communityCocktails, newDrink],
+                    strDrink: '',
+                    strDrinkThumb: ''
+                })
+                // console.log(this.state.cocktails)
+            })
+    }
+
+    componentDidMount(){
+        this.getData();
+    }
+
+    getData = () => {
+        fetch('/cocktails')
+            .then(response => response.json())
+            .then(data => this.setState({communityCocktails: data}))
+    }
+
+    render(){
+        return (
+            <div>
+            <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
+            {this.state.communityCocktails && this.state.communityCocktails.map(drink => {
+                            return (
+                                <div>
+                                <p>{drink.strDrink}</p>
+                                <img src={drink.strDrinkThumb}></img>
+                                </div>
+                    
+                            )
+                        })
+                    }
+            </div>
+        )
+    }
+}
+
 
 class App extends React.Component {
     state = {
@@ -32,15 +91,17 @@ class App extends React.Component {
         apikey: "1/",
         query: "filter.php?i=",
         ingredient: '',
-        searchURL: ""
+        searchURL: "",
+        community: false
     }
 
     componentDidMount(){
         this.setState({
-            ingredient: 'lime',
-            searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
+            // ingredient: 'scotch',
+            query: 'random.php',
+            searchURL: this.state.baseURL + this.state.apikey
         }, () => {
-            fetch(this.state.searchURL + this.state.ingredient)
+            fetch(this.state.searchURL + this.state.query)
             .then(response => response.json())
             .then(data => this.setState({cocktails: data}))
         })
@@ -82,46 +143,63 @@ class App extends React.Component {
     //     })
     // }
 
-    handleSubmit = (event, newFormState) => {
-        event.preventDefault();
-        fetch('/cocktails', {
-            body: JSON.stringify({strDrink: this.state.strDrink, strDrinkThumb: this.state.strDrinkThumb}),
-            method: "POST",
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.json())
-            .then(newDrink => {
-                newDrink.strDrink = newFormState.strDrink
-                newDrink.strDrinkThumb = newFormState.strDrinkThumb
-                console.log(newDrink)
-                this.setState({
-                    cocktails: [...this.state.cocktails, newDrink],
-                    strDrink: '',
-                    strDrinkThumb: ''
-                })
-            })
+    // handleSubmit = (event, newFormState) => {
+    //     event.preventDefault();
+    //     fetch('/cocktails', {
+    //         body: JSON.stringify(newFormState),
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json, text/plain, */*',
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }).then(response => response.json())
+    //         .then(newDrink => {
+    //             // newDrink.strDrink = newFormState.strDrink
+    //             // newDrink.strDrinkThumb = newFormState.strDrinkThumb
+    //             this.setState({
+    //                 cocktails: {drinks: [...this.state.cocktails.drinks, newDrink]},
+    //                 strDrink: '',
+    //                 strDrinkThumb: ''
+    //             })
+    //             // console.log(this.state.cocktails)
+    //         })
+    // }
+
+    swapCommunity = () => {
+        this.setState({
+            community: !this.state.community
+        })
     }
 
     render(){
         // this for some reason prints out 2 console logs, one of the cocktails arr and one of just an object containing 5 drinks
         // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again
-        console.log(this.state.cocktails.drinks)
+        // console.log(this.state.cocktails)
         return (
             <div>
-                <h1>Cocktails</h1>
-                <NewDrinkForm cocktails={this.state.cocktails} handleSubmit={this.handleSubmit}/>
-                {/* if cocktails.drinks exists, then print. cocktails.drinks does not exist until after browser loads and half second delay */}
-                {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
-                        return (
-                            <div>
-                            <p>{drink.strDrink}</p>
-                            <img src={drink.strDrinkThumb}></img>
-                            </div>
-                
-                        )
-                    })
+                {this.state.community &&
+                <div>
+                    <h1>Community Posted Cocktails</h1>
+                    <CommunityCocktail  />
+                    <button onClick={this.swapCommunity}>test</button>
+                </div>
+                }
+                {this.state.community === false &&
+
+                <div>
+                    <h1>Cocktails</h1>
+                    <button onClick={this.swapCommunity}>test</button>
+                    {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
+                            return (
+                                <div>
+                                <p>{drink.strDrink}</p>
+                                <img src={drink.strDrinkThumb}></img>
+                                </div>
+                    
+                            )
+                        })
+                    }
+                </div>
                 }
             </div>
         )

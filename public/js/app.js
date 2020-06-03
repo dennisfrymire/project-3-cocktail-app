@@ -46,11 +46,11 @@ class Edit extends React.Component {
     render() {
       console.log(this.props.updateCocktail)
       return(
-        <form onSubmit={(event) => this.props.updateBookmark(event, this.props.bookmark)}>
+        <form onSubmit={(event) => this.props.updateCocktail(event, this.props.communityCocktails)}>
           <label htmlFor="title">Drink</label>
           <input type="text" value={this.props.communityCocktails.strDrink} id="title" onChange={this.handleChange}/>
           <label htmlFor="url">URL</label>
-          <input type="url" value={this.props.communityCocktail.strDrinkThumb} id="url" onChange={this.handleChangeURL}/>
+          <input type="url" value={this.props.communityCocktails.strDrinkThumb} id="url" onChange={this.handleChangeURL}/>
           <input type="submit" />
         </form>
       )

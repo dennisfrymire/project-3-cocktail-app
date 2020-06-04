@@ -75,12 +75,42 @@ class Edit extends React.Component {
         strDrinkThumb: '',
     }
   
-    handleChange = (event) => {
+    handleChangeDrink = (event) => {
       this.setState({[event.target.id]:event.target.value})
       this.props.currentDrink.strDrink= event.target.value
     }
+    
+    handleChangeIngredient1 = (event) => {
+        this.setState({[event.target.id]:event.target.value})
+        this.props.currentDrink.strIngredient1= event.target.value
+      }
+
+    handleChangeIngredient2 = (event) => {
+        this.setState({[event.target.id]:event.target.value})
+        this.props.currentDrink.strIngredient2= event.target.value
+      }
+
+    handleChangeIngredient3 = (event) => {
+        this.setState({[event.target.id]:event.target.value})
+        this.props.currentDrink.strIngredient3= event.target.value
+      }
+    
+    handleChangeIngredient4 = (event) => {
+        this.setState({[event.target.id]:event.target.value})
+        this.props.currentDrink.strIngredient4= event.target.value
+      }
+
+    handleChangeIngredient5 = (event) => {
+        this.setState({[event.target.id]:event.target.value})
+        this.props.currentDrink.strIngredient5= event.target.value
+      }
+
+    handleChangeStrInstructions = (event) => {
+        this.setState({[event.target.id]:event.target.value})
+        this.props.currentDrink.strInstructions= event.target.value
+      }
   
-    handleChangeURL = (event) =>{
+    handleChangeStrDrinkThumb = (event) =>{
       this.setState({[event.target.id]:event.target.value})
       this.props.currentDrink.strDrinkThumb = event.target.value
     }
@@ -92,21 +122,21 @@ class Edit extends React.Component {
             {this.props.currentDrink && 
             <form onSubmit={(event) => this.props.updateCocktail(event, this.props.currentDrink)}>
             <label htmlFor="strDrink">Drink</label>
-            <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChange}/>
+            <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChangeDrink}/>
             <label htmlFor="strIngredient1">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient1} id="strIngredient1" onChange={this.handleChange}/>
+            <input type="text" value={this.props.currentDrink.strIngredient1} id="strIngredient1" onChange={this.handleChangeIngredient1}/>
             <label htmlFor="strIngredient2">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient2} id="strIngredient2" onChange={this.handleChange}/>
+            <input type="text" value={this.props.currentDrink.strIngredient2} id="strIngredient2" onChange={this.handleChangeIngredient2}/>
             <label htmlFor="strIngredient3">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient3} id="strIngredient3" onChange={this.handleChange}/>
+            <input type="text" value={this.props.currentDrink.strIngredient3} id="strIngredient3" onChange={this.handleChangeIngredient3}/>
             <label htmlFor="Ingredient4">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient4} id="strIngredient4" onChange={this.handleChange}/>
+            <input type="text" value={this.props.currentDrink.strIngredient4} id="strIngredient4" onChange={this.handleChangeIngredient4}/>
             <label htmlFor="strIngredient5">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient5} id="strIngredient5" onChange={this.handleChange}/>
+            <input type="text" value={this.props.currentDrink.strIngredient5} id="strIngredient5" onChange={this.handleChangeIngredient5}/>
             <label htmlFor="strInstructions">Instructions</label>
-            <input type="text" value={this.props.currentDrink.strInstructions} id="strInstructions" onChange={this.handleChange}/>
+            <input type="text" value={this.props.currentDrink.strInstructions} id="strInstructions" onChange={this.handleChangeStrInstructions}/>
             <label htmlFor="strDrinkThumb">URL</label>
-            <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeURL}/>
+            <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeStrDrinkThumb}/>
             <input type="submit"/>
             </form>
             }
@@ -224,6 +254,8 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient2}</li>
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
+                            <li>{this.state.currentDrink.strIngredient5}</li>
+                            <li>{this.state.currentDrink.strInstructions}</li>
                         </ul>
                         <button onClick={this.toggleEdit}>Edit Cocktail</button>
                         </div>}

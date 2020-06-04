@@ -1,5 +1,32 @@
-* {
+/* * {
     background-color: darkgray;
+} */
+
+body {
+    background: url("https://c0.wallpaperflare.com/preview/641/1018/471/bar-stool-drink-booze.jpg") no-repeat center fixed;
+    height: 100%;
+    width: auto;
+    background-size: cover;
+}
+
+header {
+    position: relative;
+    height: 15vh;
+
+}
+
+h1 {
+    color: rgb(180, 176, 176);
+}
+
+.container {
+    height: 100vh;
+    width: 75%;
+    border-style: double;
+    border-width: 5px;
+    border-color: rgb(119, 136, 153);
+    background-color: rgba(112, 128, 144, 0.5) ;
+    
 }
 
 img {

@@ -61,7 +61,6 @@ class NewDrinkForm extends React.Component {
 }
 
 class Edit extends React.Component {
-
     state = {
         strDrink: '',
         strDrinkThumb: ''
@@ -69,24 +68,28 @@ class Edit extends React.Component {
   
     handleChange = (event) => {
       this.setState({[event.target.id]:event.target.value})
-      this.props.communityCocktails.strDrink= event.target.value
+      this.props.currentDrink.strDrink= event.target.value
     }
   
     handleChangeURL = (event) =>{
       this.setState({[event.target.id]:event.target.value})
-      this.props.communityCocktails.url = event.target.value
+      this.props.currentDrink.strDrinkThumb = event.target.value
     }
     
     render() {
-      console.log(this.props.updateCocktail)
+        // console.log(this.props.currentDrink)
       return(
-        <form onSubmit={(event) => this.props.updateBookmark(event, this.props.bookmark)}>
-          <label htmlFor="title">Drink</label>
-          <input type="text" value={this.props.communityCocktails.strDrink} id="title" onChange={this.handleChange}/>
-          <label htmlFor="url">URL</label>
-          <input type="url" value={this.props.communityCocktail.strDrinkThumb} id="url" onChange={this.handleChangeURL}/>
-          <input type="submit" />
-        </form>
+        <div>
+            {this.props.currentDrink && 
+            <form onSubmit={(event) => this.props.updateCocktail(event, this.props.currentDrink)}>
+            <label htmlFor="strDrink">Drink</label>
+            <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChange}/>
+            <label htmlFor="strDrinkThumb">URL</label>
+            <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeURL}/>
+            <input type="submit" onClick={this.props.toggleEdit}/>
+            </form>
+            }
+        </div>
       )
     }
   }
@@ -97,6 +100,7 @@ class CommunityCocktail extends React.Component {
     state = {
         communityCocktails: [],
         selectCocktail: false,
+        editCocktail: false,
         currentDrink: {}
     }
 
@@ -169,12 +173,14 @@ class CommunityCocktail extends React.Component {
             )
     }
 
-    updateCocktail = (event, communityCocktails) => {
+    toggleEdit = () => {
+        this.setState({editCocktail: !this.state.editCocktail})
+    }
+
+    updateCocktail = (event, currentDrink) => {
         event.preventDefault();
-        alert(event)
-        console.log(communityCocktails);
-        fetch('cocktails/' + communityCocktails._id, {
-            body: JSON.stringify(communityCocktails),
+        fetch('cocktails/' + currentDrink._id, {
+            body: JSON.stringify(currentDrink),
             method: "PUT",
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -190,6 +196,8 @@ class CommunityCocktail extends React.Component {
             <div>
                 {this.state.selectCocktail &&
                     <div className="card">
+                        {!this.state.editCocktail &&
+                        <div>
                         <p>{this.state.currentDrink.strDrink}</p>
                         <img src={this.state.currentDrink.strDrinkThumb}></img>
                         <ul>
@@ -198,6 +206,11 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                         </ul>
+                        </div>}
+                        {this.state.editCocktail && 
+                        <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>
+                        }
+                        <button onClick={this.toggleEdit}>Edit Cocktail</button>
                         <button onClick={this.toggleSelectCocktail}>Go Back</button>
                     </div>
                 }

@@ -187,9 +187,9 @@ class CommunityCocktail extends React.Component {
     render(){
         // console.log(this.state.communityCocktails)
         return (
-            <div className="container">
+            <div>
                 {this.state.selectCocktail &&
-                    <div>
+                    <div className="card">
                         <p>{this.state.currentDrink.strDrink}</p>
                         <img src={this.state.currentDrink.strDrinkThumb}></img>
                         <ul>
@@ -319,7 +319,7 @@ class App extends React.Component {
             <div className="container">
                 {this.state.community &&
                 <div>
-                    <h1>Community Posted Cocktails</h1>
+                    <h1 className="text-center">Community Posted Cocktails</h1>
                     <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
                     <button onClick={this.swapCommunity}>test</button>

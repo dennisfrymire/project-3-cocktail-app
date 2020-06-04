@@ -316,8 +316,6 @@ class App extends React.Component {
     }
 
 
-<<<<<<< HEAD
-=======
     // getData = () => {
     //     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
     //     .then(response => response.json())
@@ -325,7 +323,6 @@ class App extends React.Component {
     // }
 
     
->>>>>>> 6578e0920aa40f2e75773b864c7dec91574e6d6e
     swapCommunity = () => {
         this.setState({
             community: !this.state.community

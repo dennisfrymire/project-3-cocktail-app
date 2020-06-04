@@ -2,7 +2,6 @@
 class NewDrinkForm extends React.Component {
     state = {
         strDrink: '',
-        strDrinkThumb: '',
         strIngredient1: '',
         strMeasure1: '',
         strIngredient2: '',
@@ -13,8 +12,8 @@ class NewDrinkForm extends React.Component {
         strMeasure4: '',
         strIngredient5: '',
         strMeasure5: '',
-        strGlass: '',
         strInstructions: '',
+        strDrinkThumb: '',
     }
 
     handleChange = (event) => {
@@ -62,7 +61,18 @@ class NewDrinkForm extends React.Component {
 class Edit extends React.Component {
     state = {
         strDrink: '',
-        strDrinkThumb: ''
+        strIngredient1: '',
+        strMeasure1: '',
+        strIngredient2: '',
+        strMeasure2: '',
+        strIngredient3: '',
+        strMeasure3: '',
+        strIngredient4: '',
+        strMeasure4: '',
+        strIngredient5: '',
+        strMeasure5: '',
+        strInstructions: '',
+        strDrinkThumb: '',
     }
   
     handleChange = (event) => {
@@ -83,6 +93,18 @@ class Edit extends React.Component {
             <form onSubmit={(event) => this.props.updateCocktail(event, this.props.currentDrink)}>
             <label htmlFor="strDrink">Drink</label>
             <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChange}/>
+            <label htmlFor="strIngredient1">Ingredient</label>
+            <input type="text" value={this.props.currentDrink.strIngredient1} id="strIngredient1" onChange={this.handleChange}/>
+            <label htmlFor="strIngredient2">Ingredient</label>
+            <input type="text" value={this.props.currentDrink.strIngredient2} id="strIngredient2" onChange={this.handleChange}/>
+            <label htmlFor="strIngredient3">Ingredient</label>
+            <input type="text" value={this.props.currentDrink.strIngredient3} id="strIngredient3" onChange={this.handleChange}/>
+            <label htmlFor="Ingredient4">Ingredient</label>
+            <input type="text" value={this.props.currentDrink.strIngredient4} id="strIngredient4" onChange={this.handleChange}/>
+            <label htmlFor="strIngredient5">Ingredient</label>
+            <input type="text" value={this.props.currentDrink.strIngredient5} id="strIngredient5" onChange={this.handleChange}/>
+            <label htmlFor="strInstructions">Instructions</label>
+            <input type="text" value={this.props.currentDrink.strInstructions} id="strInstructions" onChange={this.handleChange}/>
             <label htmlFor="strDrinkThumb">URL</label>
             <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeURL}/>
             <input type="submit"/>
@@ -129,7 +151,6 @@ class CommunityCocktail extends React.Component {
                     strMeasure4: '',
                     strIngredient5: '',
                     strMeasure5: '',
-                    strGlass: '',
                     strInstructions: '',
                     strDrinkThumb: ''
                 })

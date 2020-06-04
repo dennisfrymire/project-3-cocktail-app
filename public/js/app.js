@@ -54,7 +54,6 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strDrinkThumb'>Image Link</label>
                     <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
-                    
                 </form>
         )
     }
@@ -235,18 +234,63 @@ class CommunityCocktail extends React.Component {
     }
 }
 
-// class SearchAPI extends React.Component {
-//     state = {
-//         cocktails: [],
-//         baseURL: "https://www.thecocktaildb.com/api/json/v1/",
-//         apikey: "1/",
-//         query: "filter.php?i=",
-//         ingredient: '',
-//         searchURL: "",
-//         community: false
-//     }
-// }
+class SearchAPI extends React.Component {
+    state = {
+        cocktails: [],
+        baseURL: "https://www.thecocktaildb.com/api/json/v1/",
+        apikey: "1/",
+        query: "filter.php?i=",
+        ingredient: '',
+        searchURL: "",
+        community: false
+    }
 
+    handleChange =(event)=>{
+        this.setState ({
+            [event.target.id]:event.target.value
+        })
+    }
+    
+    handleSubmit = (event) => {
+        event.preventDefault();
+        // console.log(this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient)
+        this.setState({
+            searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
+        }, ()=>{
+            console.log(this.state.searchURL)
+            fetch(this.state.searchURL).then((response)=>{
+                return response.json()
+            }).then((data)=>{
+                this.setState({
+                    drink:data
+                })
+            }, err=> console.log(err))
+        })
+    }
+    render() {
+        return(
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="strDrink">Drink</label>
+                    <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+                    <input type = "submit" value = "Search for a drink" />
+                </form>
+                {this.state.drink && 
+                this.state.drink.drinks.map(
+                    item => {
+                        return (
+                            <div>
+                                {item.strDrink}
+                                <img src={item.strDrinkThumb} />
+                            </div>
+                        )
+                    }
+                )
+                }
+            </div>
+        )
+    }
+}
 
 class App extends React.Component {
     state = {
@@ -274,11 +318,11 @@ class App extends React.Component {
     }
 
 
-    getData = () => {
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
-        .then(response => response.json())
-        .then(data => this.setState({cocktails: data}))
-    }
+    // getData = () => {
+    //     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
+    //     .then(response => response.json())
+    //     .then(data => this.setState({cocktails: data}))
+    // }
 
     swapCommunity = () => {
         this.setState({
@@ -287,26 +331,7 @@ class App extends React.Component {
     }
 
 
-    handleChange =(event)=>{
-        this.setState ({
-            [event.target.id]:event.target.value
-        })
-    }
-    
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.setState({
-            searchUrl: this.state.baseURL + this.state.apiKey + this.state.query + this.state.ingredient
-        }, ()=>{
-            fetch(this.state.searchUrl).then((response)=>{
-                return response.json()
-            }).then((data)=>{
-                this.setState({
-                    drink:data,
-                })
-            }, err=> console.log(err))
-        })
-    }
+
 
     render(){
         return (
@@ -316,7 +341,8 @@ class App extends React.Component {
                     <h1 className="text-center">Community Posted Cocktails</h1>
                     <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
-                    <button onClick={this.swapCommunity}>test</button>
+                    <button onClick={this.swapCommunity}>Go Back</button>
+                    
                 </div>
                 }
                 {this.state.community === false &&
@@ -341,18 +367,15 @@ class App extends React.Component {
                                     <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
                                     <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                     <p>{drink.strInstructions}</p>
+                                    <SearchAPI />
                                 </div>
                     
                             )
                         })
                     }
-                    <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="strDrink">Drink</label>
-                    <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
-                    <input type = "submit" value = "Search for a drink" />
-                    </form>
                 </div>
                 }
+                
             </div>
         )
     }

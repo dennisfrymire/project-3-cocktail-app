@@ -344,7 +344,9 @@ class SearchAPIByIngredient extends React.Component {
     }
 }
 
-// this is wiping out everything on the page when a drink is submitted
+// wondering if we can combine the two search functions into one since ther's a lot of repetitive code
+// possibly just put a second handle submit that is different
+// the second handle submit maybe setState the query to be what we need?
 
 class SearchAPIByDrinkName extends React.Component {
     state = {

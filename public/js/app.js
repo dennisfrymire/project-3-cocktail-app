@@ -207,7 +207,7 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                         </ul>
-                        <button onClick={this.toggleEdit}>Edit Cocktail</button>
+            
                         </div>}
                         {this.state.editCocktail && 
                         <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>

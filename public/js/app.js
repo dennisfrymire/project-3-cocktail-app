@@ -86,7 +86,7 @@ class Edit extends React.Component {
             <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChange}/>
             <label htmlFor="strDrinkThumb">URL</label>
             <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeURL}/>
-            <input type="submit" onClick={this.props.toggleEdit}/>
+            <input type="submit"/>
             </form>
             }
         </div>
@@ -177,6 +177,7 @@ class CommunityCocktail extends React.Component {
 
     updateCocktail = (event, currentDrink) => {
         event.preventDefault();
+        this.toggleEdit();
         fetch('cocktails/' + currentDrink._id, {
             body: JSON.stringify(currentDrink),
             method: "PUT",
@@ -204,12 +205,17 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                         </ul>
+                        <button onClick={this.toggleEdit}>Edit Cocktail</button>
                         </div>}
                         {this.state.editCocktail && 
                         <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>
                         }
+<<<<<<< HEAD
                         <button onClick={this.toggleEdit}>Edit Cocktail</button>
+                        <button onClick={this.toggleSelectCocktail}>Cancel</button>
+=======
                         <button onClick={this.toggleSelectCocktail}>Go Back</button>
+>>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
                     </div>
                 }
 
@@ -279,55 +285,10 @@ class App extends React.Component {
         .then(data => this.setState({cocktails: data}))
     }
 
+<<<<<<< HEAD
     
-    // handleChange = (event) => {
-    //     // setState is a built-in method of the React library
-    //     this.setState({
-    //         [event.target.id]: event.target.value
-    //     })
-    // }
-
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     this.setState({
-    //         searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
-    //     }, () => {
-    //         fetch(this.state.searchURL).then((response) => {
-    //             return response.json();
-
-    //         }).then((data) => {
-    //             console.log(data);
-    //             this.setState({
-    //                 drink: data,
-    //                 ingredient: ''
-    //             })
-    //         }, err => console.log(err));
-    
-    //     })
-    // }
-
-    // handleSubmit = (event, newFormState) => {
-    //     event.preventDefault();
-    //     fetch('/cocktails', {
-    //         body: JSON.stringify(newFormState),
-    //         method: "POST",
-    //         headers: {
-    //             'Accept': 'application/json, text/plain, */*',
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then(response => response.json())
-    //         .then(newDrink => {
-    //             // newDrink.strDrink = newFormState.strDrink
-    //             // newDrink.strDrinkThumb = newFormState.strDrinkThumb
-    //             this.setState({
-    //                 cocktails: {drinks: [...this.state.cocktails.drinks, newDrink]},
-    //                 strDrink: '',
-    //                 strDrinkThumb: ''
-    //             })
-    //             // console.log(this.state.cocktails)
-    //         })
-    // }
-
+=======
+>>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
     swapCommunity = () => {
         this.setState({
             community: !this.state.community
@@ -357,9 +318,6 @@ class App extends React.Component {
     }
 
     render(){
-        // this for some reason prints out 2 console logs, one of the cocktails arr and one of just an object containing 5 drinks
-        // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again
-        // console.log(this.state.cocktails)
         return (
             <div className="container">
                 {this.state.community &&

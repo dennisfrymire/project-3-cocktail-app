@@ -193,7 +193,7 @@ class CommunityCocktail extends React.Component {
     render(){
         // console.log(this.state.communityCocktails)
         return (
-            <div>
+            <div className="container">
                 {this.state.selectCocktail &&
                     <div>
                         {!this.state.editCocktail &&
@@ -220,8 +220,8 @@ class CommunityCocktail extends React.Component {
                 <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
                 {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
                                 return (
-                                    <div>
-                                    <p>{drink.strDrink}</p>
+                                    <div className="card" style={{width: "105px"}}>
+                                    <h5 className="card-title">{drink.strDrink}</h5>
                                     <img src={drink.strDrinkThumb}></img>
                                     <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
                                     <button onClick={() => this.showCocktail(drink._id)}>Show</button>
@@ -262,22 +262,14 @@ class App extends React.Component {
         // this.getData();
     }
 
-    // getData = () => {
-        // this.setState({
-        //     ingredient: 'margarita',
-        //     searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
-        // })
-        // console.log(this.state.ingredient)
-        // console.log(this.state.searchURL)
-        // // fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
-        // fetch(this.state.searchURL + this.state.ingredient)
-        // .then(response => response.json())
-        // .then(data => {
-        //     console.log(data)
-        //     this.setState({cocktails: data})
-        // })
-    // }
 
+    getData = () => {
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
+        .then(response => response.json())
+        .then(data => this.setState({cocktails: data}))
+    }
+
+    
     // handleChange = (event) => {
     //     // setState is a built-in method of the React library
     //     this.setState({
@@ -337,23 +329,27 @@ class App extends React.Component {
         // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again
         // console.log(this.state.cocktails)
         return (
-            <div>
+            <div className="container">
                 {this.state.community &&
                 <div>
                     <h1>Community Posted Cocktails</h1>
-                    <CommunityCocktail />
+                    <h2>Try these drinks below, and add your own.</h2>
+                    <CommunityCocktail  />
                     <button onClick={this.swapCommunity}>test</button>
                 </div>
                 }
                 {this.state.community === false &&
 
                 <div>
-                    <h1>Cocktails</h1>
+                    <header>
+                    <h1 className="text-center">Cocktails</h1>
+                    </header>
+                    
                     <h2>Find your next favorite drink</h2>
                     <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
                     {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
                             return (
-                                <div>
+                                <div className="card">
                                 <h3>Try this at your next party:</h3>
                                 <p>{drink.strDrink}</p>
                                 <img src={drink.strDrinkThumb}></img>

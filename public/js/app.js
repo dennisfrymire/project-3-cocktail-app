@@ -191,9 +191,9 @@ class CommunityCocktail extends React.Component {
     render(){
         // console.log(this.state.communityCocktails)
         return (
-            <div className="container">
+            <div>
                 {this.state.selectCocktail &&
-                    <div>
+                    <div className="card">
                         {!this.state.editCocktail &&
                         <div>
                         <p>{this.state.currentDrink.strDrink}</p>
@@ -233,6 +233,18 @@ class CommunityCocktail extends React.Component {
         )
     }
 }
+
+// class SearchAPI extends React.Component {
+//     state = {
+//         cocktails: [],
+//         baseURL: "https://www.thecocktaildb.com/api/json/v1/",
+//         apikey: "1/",
+//         query: "filter.php?i=",
+//         ingredient: '',
+//         searchURL: "",
+//         community: false
+//     }
+// }
 
 
 class App extends React.Component {
@@ -322,6 +334,28 @@ class App extends React.Component {
         })
     }
 
+
+    handleChange =(event)=>{
+        this.setState ({
+            [event.target.id]:event.target.value
+        })
+    }
+    
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({
+            searchUrl: this.state.baseURL + this.state.apiKey + this.state.query + this.state.ingredient
+        }, ()=>{
+            fetch(this.state.searchUrl).then((response)=>{
+                return response.json()
+            }).then((data)=>{
+                this.setState({
+                    drink:data,
+                })
+            }, err=> console.log(err))
+        })
+    }
+
     render(){
         // this for some reason prints out 2 console logs, one of the cocktails arr and one of just an object containing 5 drinks
         // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again
@@ -330,7 +364,7 @@ class App extends React.Component {
             <div className="container">
                 {this.state.community &&
                 <div>
-                    <h1>Community Posted Cocktails</h1>
+                    <h1 className="text-center">Community Posted Cocktails</h1>
                     <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
                     <button onClick={this.swapCommunity}>test</button>
@@ -363,6 +397,11 @@ class App extends React.Component {
                             )
                         })
                     }
+                    <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="strDrink">Drink</label>
+                    <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+                    <input type = "submit" value = "Search for a drink" />
+                    </form>
                 </div>
                 }
             </div>

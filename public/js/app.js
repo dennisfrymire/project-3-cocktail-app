@@ -79,15 +79,6 @@ class Edit extends React.Component {
     render() {
         // console.log(this.props.currentDrink)
       return(
-<<<<<<< HEAD
-        <form onSubmit={(event) => this.props.updateCocktail(event, this.props.communityCocktails)}>
-          <label htmlFor="title">Drink</label>
-          <input type="text" value={this.props.communityCocktails.strDrink} id="title" onChange={this.handleChange}/>
-          <label htmlFor="url">URL</label>
-          <input type="url" value={this.props.communityCocktails.strDrinkThumb} id="url" onChange={this.handleChangeURL}/>
-          <input type="submit" />
-        </form>
-=======
         <div>
             {this.props.currentDrink && 
             <form onSubmit={(event) => this.props.updateCocktail(event, this.props.currentDrink)}>
@@ -99,7 +90,6 @@ class Edit extends React.Component {
             </form>
             }
         </div>
->>>>>>> 43af9ddfdb292b055b55c77787eaf676b371ac3c
       )
     }
   }
@@ -222,12 +212,7 @@ class CommunityCocktail extends React.Component {
                         {this.state.editCocktail && 
                         <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>
                         }
-<<<<<<< HEAD
-                        <button onClick={this.toggleEdit}>Edit Cocktail</button>
-                        <button onClick={this.toggleSelectCocktail}>Cancel</button>
-=======
                         <button onClick={this.toggleSelectCocktail}>Go Back</button>
->>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
                     </div>
                 }
 
@@ -285,10 +270,6 @@ class App extends React.Component {
         .then(data => this.setState({cocktails: data}))
     }
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
     swapCommunity = () => {
         this.setState({
             community: !this.state.community

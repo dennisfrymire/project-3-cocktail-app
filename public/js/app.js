@@ -210,12 +210,7 @@ class CommunityCocktail extends React.Component {
                         {this.state.editCocktail && 
                         <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>
                         }
-<<<<<<< HEAD
-                        <button onClick={this.toggleEdit}>Edit Cocktail</button>
-                        <button onClick={this.toggleSelectCocktail}>Cancel</button>
-=======
                         <button onClick={this.toggleSelectCocktail}>Go Back</button>
->>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
                     </div>
                 }
 
@@ -285,10 +280,6 @@ class App extends React.Component {
         .then(data => this.setState({cocktails: data}))
     }
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
     swapCommunity = () => {
         this.setState({
             community: !this.state.community

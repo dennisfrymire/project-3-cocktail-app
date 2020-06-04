@@ -156,7 +156,19 @@ class CommunityCocktail extends React.Component {
                 })
             })
     }
-    
+
+    toggleSelectCocktail = () => {
+        this.setState({selectCocktail: !this.state.selectCocktail})
+    }
+
+    showCocktail = (id) => {
+        this.setState({selectCocktail: !this.state.selectCocktail})
+        fetch(`/cocktails/${id}`)
+            .then(response => response.json())
+            .then(data => this.setState({currentDrink: data})
+            )
+    }
+
     updateCocktail = (event, communityCocktails) => {
         event.preventDefault();
         alert(event)
@@ -171,18 +183,6 @@ class CommunityCocktail extends React.Component {
         }).then(response=>response.json()).then(data=>{
             this.getData()
         })}
-
-    toggleSelectCocktail = () => {
-        this.setState({selectCocktail: !this.state.selectCocktail})
-    }
-
-    showCocktail = (id) => {
-        this.setState({selectCocktail: !this.state.selectCocktail})
-        fetch(`/cocktails/${id}`)
-            .then(response => response.json())
-            .then(data => this.setState({currentDrink: data})
-            )
-    }
 
     render(){
         // console.log(this.state.communityCocktails)
@@ -320,8 +320,12 @@ class App extends React.Component {
                 {this.state.community &&
                 <div>
                     <h1>Community Posted Cocktails</h1>
+<<<<<<< HEAD
                     <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
+=======
+                    <CommunityCocktail />
+>>>>>>> 8079facbd3c5a6669cf105f45491fd3347190661
                     <button onClick={this.swapCommunity}>test</button>
                 </div>
                 }

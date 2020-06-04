@@ -259,16 +259,8 @@ class App extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({cocktails: data}))
         })
-        // fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
-        // this.getData();
     }
 
-
-    getData = () => {
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
-        .then(response => response.json())
-        .then(data => this.setState({cocktails: data}))
-    }
 
     swapCommunity = () => {
         this.setState({

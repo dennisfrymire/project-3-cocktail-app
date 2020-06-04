@@ -93,8 +93,6 @@ class Edit extends React.Component {
       )
     }
   }
-  
-  
 
 class CommunityCocktail extends React.Component {
     state = {
@@ -237,6 +235,18 @@ class CommunityCocktail extends React.Component {
     }
 }
 
+// class SearchAPI extends React.Component {
+//     state = {
+//         cocktails: [],
+//         baseURL: "https://www.thecocktaildb.com/api/json/v1/",
+//         apikey: "1/",
+//         query: "filter.php?i=",
+//         ingredient: '',
+//         searchURL: "",
+//         community: false
+//     }
+// }
+
 
 class App extends React.Component {
     state = {
@@ -273,6 +283,28 @@ class App extends React.Component {
     swapCommunity = () => {
         this.setState({
             community: !this.state.community
+        })
+    }
+
+
+    handleChange =(event)=>{
+        this.setState ({
+            [event.target.id]:event.target.value
+        })
+    }
+    
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({
+            searchUrl: this.state.baseURL + this.state.apiKey + this.state.query + this.state.ingredient
+        }, ()=>{
+            fetch(this.state.searchUrl).then((response)=>{
+                return response.json()
+            }).then((data)=>{
+                this.setState({
+                    drink:data,
+                })
+            }, err=> console.log(err))
         })
     }
 
@@ -314,6 +346,11 @@ class App extends React.Component {
                             )
                         })
                     }
+                    <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="strDrink">Drink</label>
+                    <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+                    <input type = "submit" value = "Search for a drink" />
+                    </form>
                 </div>
                 }
             </div>

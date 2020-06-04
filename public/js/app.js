@@ -346,6 +346,66 @@ class SearchAPIByIngredient extends React.Component {
     }
 }
 
+// this is wiping out everything on the page when a drink is submitted
+
+class SearchAPIByDrinkName extends React.Component {
+    state = {
+        cocktails: [],
+        baseURL: "https://www.thecocktaildb.com/api/json/v1/",
+        apikey: "1/",
+        query: "search.php?i=",
+        name: '',
+        searchURL: "",
+        community: false
+    }
+
+    handleChange =(event)=>{
+        this.setState ({
+            [event.target.id]:event.target.value
+        })
+    }
+    
+    handleSubmit = (event) => {
+        event.preventDefault();
+        // console.log(this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient)
+        this.setState({
+            searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.name
+        }, ()=>{
+            console.log(this.state.searchURL)
+            fetch(this.state.searchURL).then((response)=>{
+                return response.json()
+            }).then((data)=>{
+                this.setState({
+                    drink:data
+                })
+            }, err=> console.log(err))
+        })
+    }
+    render() {
+        return(
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="strDrink">Search for a Cocktail by Name</label>
+                    <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
+                    <input type = "submit" value = "Submit" />
+                </form>
+                {this.state.drink && 
+                this.state.drink.drinks.map(
+                    item => {
+                        return (
+                            <div>
+                                {item.strDrink}
+                                <img src={item.strDrinkThumb} />
+                            </div>
+                        )
+                    }
+                )
+                }
+            </div>
+        )
+    }
+}
+
 class App extends React.Component {
     state = {
         cocktails: [],
@@ -421,6 +481,8 @@ class App extends React.Component {
                                     <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                     <p>{drink.strInstructions}</p>
                                     <SearchAPIByIngredient />
+                                    {/* this is wiping out everything on the page when a drink is submitted */}
+                                    <SearchAPIByDrinkName />
                                 </div>
                     
                             )

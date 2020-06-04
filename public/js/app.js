@@ -288,15 +288,17 @@ class CommunityCocktail extends React.Component {
     }
 }
 
-class SearchAPIByIngredient extends React.Component {
+class SearchAPIByDrinkOrIngredient extends React.Component {
     state = {
         cocktails: [],
         baseURL: "https://www.thecocktaildb.com/api/json/v1/",
         apikey: "1/",
-        query: "filter.php?i=",
-        ingredient: '',
+        query: "",
+        name: '',
         searchURL: "",
-        community: false
+        community: false,
+        drinkIngredient: {},
+        drinkName: {}
     }
 
     handleChange =(event)=>{
@@ -305,16 +307,29 @@ class SearchAPIByIngredient extends React.Component {
         })
     }
     
-    handleSubmit = (event) => {
+    handleSubmitIngredient = (event) => {
         event.preventDefault();
-        // console.log(this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient)
         this.setState({
-            searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
+            searchURL: this.state.baseURL + this.state.apikey + 'filter.php?i=' + this.state.ingredient
         }, ()=>{
             fetch(this.state.searchURL).then(response => response.json())
             .then((data)=>{
                 this.setState({
-                    drink:data
+                    drinkIngredient:data
+                })
+            }, err=> console.log(err))
+        })
+    }
+
+    handleSubmitName = (event) => {
+        event.preventDefault();
+        this.setState({
+            searchURL: this.state.baseURL + this.state.apikey + 'search.php?s=' + this.state.name
+        }, ()=>{
+            fetch(this.state.searchURL).then(response => response.json())
+            .then((data)=>{
+                this.setState({
+                    drinkName:data
                 })
             }, err=> console.log(err))
         })
@@ -322,13 +337,13 @@ class SearchAPIByIngredient extends React.Component {
     render() {
         return(
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmitIngredient}>
                     <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
                     <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>
-                {this.state.drink && 
-                this.state.drink.drinks.map(
+                {this.state.drinkIngredient.drinks && 
+                this.state.drinkIngredient.drinks.map(
                     item => {
                         return (
                             <div>
@@ -339,58 +354,13 @@ class SearchAPIByIngredient extends React.Component {
                     }
                 )
                 }
-            </div>
-        )
-    }
-}
-
-// wondering if we can combine the two search functions into one since ther's a lot of repetitive code
-// possibly just put a second handle submit that is different
-// the second handle submit maybe setState the query to be what we need?
-
-class SearchAPIByDrinkName extends React.Component {
-    state = {
-        cocktails: [],
-        baseURL: "https://www.thecocktaildb.com/api/json/v1/",
-        apikey: "1/",
-        query: "search.php?s=",
-        name: '',
-        searchURL: "",
-        community: false,
-        drink: {}
-    }
-
-    handleChange =(event)=>{
-        this.setState ({
-            [event.target.id]:event.target.value
-        })
-    }
-    
-    handleSubmit = (event) => {
-        event.preventDefault();
-        // console.log(this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient)
-        this.setState({
-            searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.name
-        }, ()=>{
-            fetch(this.state.searchURL).then(response => response.json())
-            .then((data)=>{
-                this.setState({
-                    drink:data
-                })
-            }, err=> console.log(err))
-        })
-    }
-    render() {
-        console.log(this.state.drink)
-        return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmitName}>
                     <label htmlFor="strDrink">Search for a Cocktail by Name</label>
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>
-                {this.state.drink.drinks && 
-                this.state.drink.drinks.map(
+                {this.state.drinkName.drinks && 
+                this.state.drinkName.drinks.map(
                     item => {
                         return (
                             <div>
@@ -401,7 +371,7 @@ class SearchAPIByDrinkName extends React.Component {
                     }
                 )
                 }
-                {this.state.drink.drinks === null &&
+                {this.state.drinkName.drinks === null &&
                 <h1>drink does not exist</h1>
                 }
             </div>
@@ -483,9 +453,9 @@ class App extends React.Component {
                                     <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
                                     <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                     <p>{drink.strInstructions}</p>
-                                    <SearchAPIByIngredient />
+                                    {/* <SearchAPIByIngredient /> */}
                                     {/* this is wiping out everything on the page when a drink is submitted */}
-                                    <SearchAPIByDrinkName />
+                                    <SearchAPIByDrinkOrIngredient />
                                 </div>
                     
                             )

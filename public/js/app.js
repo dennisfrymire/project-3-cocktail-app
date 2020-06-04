@@ -311,10 +311,8 @@ class SearchAPIByIngredient extends React.Component {
         this.setState({
             searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
         }, ()=>{
-            console.log(this.state.searchURL)
-            fetch(this.state.searchURL).then((response)=>{
-                return response.json()
-            }).then((data)=>{
+            fetch(this.state.searchURL).then(response => response.json())
+            .then((data)=>{
                 this.setState({
                     drink:data
                 })
@@ -353,10 +351,11 @@ class SearchAPIByDrinkName extends React.Component {
         cocktails: [],
         baseURL: "https://www.thecocktaildb.com/api/json/v1/",
         apikey: "1/",
-        query: "search.php?i=",
+        query: "search.php?s=",
         name: '',
         searchURL: "",
-        community: false
+        community: false,
+        drink: {}
     }
 
     handleChange =(event)=>{
@@ -371,10 +370,8 @@ class SearchAPIByDrinkName extends React.Component {
         this.setState({
             searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.name
         }, ()=>{
-            console.log(this.state.searchURL)
-            fetch(this.state.searchURL).then((response)=>{
-                return response.json()
-            }).then((data)=>{
+            fetch(this.state.searchURL).then(response => response.json())
+            .then((data)=>{
                 this.setState({
                     drink:data
                 })
@@ -382,6 +379,7 @@ class SearchAPIByDrinkName extends React.Component {
         })
     }
     render() {
+        console.log(this.state.drink)
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -389,7 +387,7 @@ class SearchAPIByDrinkName extends React.Component {
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>
-                {this.state.drink && 
+                {this.state.drink.drinks && 
                 this.state.drink.drinks.map(
                     item => {
                         return (
@@ -400,6 +398,9 @@ class SearchAPIByDrinkName extends React.Component {
                         )
                     }
                 )
+                }
+                {this.state.drink.drinks === null &&
+                <h1>drink does not exist</h1>
                 }
             </div>
         )

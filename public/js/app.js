@@ -320,18 +320,14 @@ class App extends React.Component {
                 {this.state.community &&
                 <div>
                     <h1>Community Posted Cocktails</h1>
-<<<<<<< HEAD
                     <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
-=======
-                    <CommunityCocktail />
->>>>>>> 8079facbd3c5a6669cf105f45491fd3347190661
                     <button onClick={this.swapCommunity}>test</button>
                 </div>
                 }
                 {this.state.community === false &&
 
-                <div className="container">
+                <div>
                     <header>
                     <h1 className="text-center">Cocktails</h1>
                     </header>
@@ -340,7 +336,7 @@ class App extends React.Component {
                     <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
                     {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
                             return (
-                                <div>
+                                <div className="card">
                                 <h3>Try this at your next party:</h3>
                                 <p>{drink.strDrink}</p>
                                 <img src={drink.strDrinkThumb}></img>

@@ -86,7 +86,7 @@ class Edit extends React.Component {
             <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChange}/>
             <label htmlFor="strDrinkThumb">URL</label>
             <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeURL}/>
-            <input type="submit" onClick={this.props.toggleEdit}/>
+            <input type="submit"/>
             </form>
             }
         </div>
@@ -179,6 +179,7 @@ class CommunityCocktail extends React.Component {
 
     updateCocktail = (event, currentDrink) => {
         event.preventDefault();
+        this.toggleEdit();
         fetch('cocktails/' + currentDrink._id, {
             body: JSON.stringify(currentDrink),
             method: "PUT",
@@ -193,9 +194,9 @@ class CommunityCocktail extends React.Component {
     render(){
         // console.log(this.state.communityCocktails)
         return (
-            <div className="container">
+            <div>
                 {this.state.selectCocktail &&
-                    <div>
+                    <div className="card">
                         {!this.state.editCocktail &&
                         <div>
                         <p>{this.state.currentDrink.strDrink}</p>
@@ -206,12 +207,17 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                         </ul>
+                        <button onClick={this.toggleEdit}>Edit Cocktail</button>
                         </div>}
                         {this.state.editCocktail && 
                         <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>
                         }
+<<<<<<< HEAD
                         <button onClick={this.toggleEdit}>Edit Cocktail</button>
                         <button onClick={this.toggleSelectCocktail}>Cancel</button>
+=======
+                        <button onClick={this.toggleSelectCocktail}>Go Back</button>
+>>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
                     </div>
                 }
 
@@ -269,7 +275,10 @@ class App extends React.Component {
         .then(data => this.setState({cocktails: data}))
     }
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> 42cec89e6b5a4269502cd440c3fb462db54c0605
     swapCommunity = () => {
         this.setState({
             community: !this.state.community
@@ -277,14 +286,11 @@ class App extends React.Component {
     }
 
     render(){
-        // this for some reason prints out 2 console logs, one of the cocktails arr and one of just an object containing 5 drinks
-        // i suspect the 2nd console log prints with the populated array b/c there is a delay as the brower awaits the fetch, and as the body re-renders it console.logs again
-        // console.log(this.state.cocktails)
         return (
             <div className="container">
                 {this.state.community &&
                 <div>
-                    <h1>Community Posted Cocktails</h1>
+                    <h1 className="text-center">Community Posted Cocktails</h1>
                     <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
                     <button onClick={this.swapCommunity}>test</button>

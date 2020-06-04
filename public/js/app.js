@@ -54,7 +54,6 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strDrinkThumb'>Image Link</label>
                     <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
-                    
                 </form>
         )
     }
@@ -93,8 +92,6 @@ class Edit extends React.Component {
       )
     }
   }
-  
-  
 
 class CommunityCocktail extends React.Component {
     state = {
@@ -212,7 +209,7 @@ class CommunityCocktail extends React.Component {
                         {this.state.editCocktail && 
                         <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>
                         }
-                        <button onClick={this.toggleSelectCocktail}>Go Back</button>
+                        <button onClick={this.toggleSelectCocktail}>Go back to Community</button>
                     </div>
                 }
 
@@ -237,6 +234,63 @@ class CommunityCocktail extends React.Component {
     }
 }
 
+class SearchAPI extends React.Component {
+    state = {
+        cocktails: [],
+        baseURL: "https://www.thecocktaildb.com/api/json/v1/",
+        apikey: "1/",
+        query: "filter.php?i=",
+        ingredient: '',
+        searchURL: "",
+        community: false
+    }
+
+    handleChange =(event)=>{
+        this.setState ({
+            [event.target.id]:event.target.value
+        })
+    }
+    
+    handleSubmit = (event) => {
+        event.preventDefault();
+        // console.log(this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient)
+        this.setState({
+            searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
+        }, ()=>{
+            console.log(this.state.searchURL)
+            fetch(this.state.searchURL).then((response)=>{
+                return response.json()
+            }).then((data)=>{
+                this.setState({
+                    drink:data
+                })
+            }, err=> console.log(err))
+        })
+    }
+    render() {
+        return(
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="strDrink">Drink</label>
+                    <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+                    <input type = "submit" value = "Search for a drink" />
+                </form>
+                {this.state.drink && 
+                this.state.drink.drinks.map(
+                    item => {
+                        return (
+                            <div>
+                                {item.strDrink}
+                                <img src={item.strDrinkThumb} />
+                            </div>
+                        )
+                    }
+                )
+                }
+            </div>
+        )
+    }
+}
 
 class App extends React.Component {
     state = {
@@ -262,11 +316,24 @@ class App extends React.Component {
     }
 
 
+<<<<<<< HEAD
+=======
+    // getData = () => {
+    //     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
+    //     .then(response => response.json())
+    //     .then(data => this.setState({cocktails: data}))
+    // }
+
+    
+>>>>>>> 6578e0920aa40f2e75773b864c7dec91574e6d6e
     swapCommunity = () => {
         this.setState({
             community: !this.state.community
         })
     }
+
+
+
 
     render(){
         return (
@@ -276,7 +343,8 @@ class App extends React.Component {
                     <h1 className="text-center">Community Posted Cocktails</h1>
                     <h2>Try these drinks below, and add your own.</h2>
                     <CommunityCocktail  />
-                    <button onClick={this.swapCommunity}>test</button>
+                    <button onClick={this.swapCommunity}>Go Back</button>
+                    
                 </div>
                 }
                 {this.state.community === false &&
@@ -301,6 +369,7 @@ class App extends React.Component {
                                     <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
                                     <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                     <p>{drink.strInstructions}</p>
+                                    <SearchAPI />
                                 </div>
                     
                             )
@@ -308,6 +377,7 @@ class App extends React.Component {
                     }
                 </div>
                 }
+                
             </div>
         )
     }

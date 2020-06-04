@@ -40,7 +40,7 @@ class Edit extends React.Component {
   
     handleChangeURL = (event) =>{
       this.setState({[event.target.id]:event.target.value})
-      this.props.communityCocktails.url = event.target.value
+      this.props.communityCocktails.strDrinkThumb = event.target.value
     }
     
     render() {

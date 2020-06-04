@@ -255,6 +255,7 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                             <li>{this.state.currentDrink.strIngredient5}</li>
+                            
                             <li>{this.state.currentDrink.strInstructions}</li>
                         </ul>
                         <button onClick={this.toggleEdit}>Edit Cocktail</button>
@@ -287,7 +288,7 @@ class CommunityCocktail extends React.Component {
     }
 }
 
-class SearchAPI extends React.Component {
+class SearchAPIByIngredient extends React.Component {
     state = {
         cocktails: [],
         baseURL: "https://www.thecocktaildb.com/api/json/v1/",
@@ -324,9 +325,9 @@ class SearchAPI extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="strDrink">Drink</label>
+                    <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
                     <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
-                    <input type = "submit" value = "Search for a drink" />
+                    <input type = "submit" value = "Submit" />
                 </form>
                 {this.state.drink && 
                 this.state.drink.drinks.map(
@@ -419,7 +420,7 @@ class App extends React.Component {
                                     <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
                                     <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                     <p>{drink.strInstructions}</p>
-                                    <SearchAPI />
+                                    <SearchAPIByIngredient />
                                 </div>
                     
                             )

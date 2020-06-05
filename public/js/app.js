@@ -14,7 +14,7 @@ class NewDrinkForm extends React.Component {
         strMeasure5: '',
         strInstructions: '',
         strDrinkThumb: '',
-        image: require('https://i.imgur.com/fgqTj3s.jpg')
+        // image: require('https://i.imgur.com/fgqTj3s.jpg')
     }
 
     handleChange = (event) => {
@@ -54,7 +54,7 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strInstructions'>Instructions</label>
                     <input id='strInstructions' type='text' value={this.state.strInstructions} onChange={this.handleChange}/>
                     <label htmlFor='strDrinkThumb'>Image Link</label>
-                    <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb === '' ? this.state.image : this.state.strDrinkThumb = this.state.strDrinkThumb} onChange={this.handleChange}/>
+                    <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb === '' ? (this.state.strDrinkThumb = 'https://i.imgur.com/fgqTj3s.jpg') :  this.state.strDrinkThumb = this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
                 </form>
         )

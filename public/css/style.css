@@ -25,6 +25,7 @@ ul {
 }
 
 .container {
+    
     height: 100%;
     width: 75%;
     border-style: double;
@@ -32,6 +33,11 @@ ul {
     border-color: rgb(119, 136, 153);
     background-color: rgba(112, 128, 144, 0.5) ;
     
+}
+
+.communityRows {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 img {
@@ -44,6 +50,7 @@ img {
     padding: 5px;
     margin: 5px;
 }
+
 
 button.btn {
     margin: 5px;

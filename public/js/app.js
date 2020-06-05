@@ -27,7 +27,7 @@ class NewDrinkForm extends React.Component {
     render(){
         let image = <img src="https://i.imgur.com/fgqTj3s.jpg" />
         return (
-            <div className="card">
+            <div className="card" style={{width: "80vw"}}>
                 <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
                     <div className="form-row">
                         <div className="col">
@@ -334,25 +334,34 @@ class CommunityCocktail extends React.Component {
                 }
 
                 {this.state.selectCocktail === false &&
-                <div>
-                <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
-                {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
+                <div className="communityRows">
+                    <div className="row">
+                        <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
+                    </div>
+                    <div className="row">
+                        {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
                             return (
-                                <div className="card" style={{width: "250px"}}>
-                                    <img src={drink.strDrinkThumb} class="card-img-top"></img>
-                                    <div className="card-body">
-                                    <h5 className="card-title">{drink.strDrink}</h5>
-                                        <div className="btn-group" role="group">
-                                            <button type="button" className="btn btn-secondary" onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
-                                            <button type="button" className="btn btn-secondary" onClick={() => this.showCocktail(drink._id)}>Show</button>
+                                <div className="row">
+                                    <div className="col-sm">
+                                        <div className="card" style={{width: "250px"}}>
+                                            <img src={drink.strDrinkThumb} class="card-img-top"></img>
+                                            <div className="card-body">
+                                                <h5 className="card-title">{drink.strDrink}</h5>
+                                            <div className="btn-group" role="group">
+                                                <button type="button" className="btn btn-secondary" onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
+                                                <button type="button" className="btn btn-secondary" onClick={() => this.showCocktail(drink._id)}>Show</button>
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                     
                             )
                         })
-                    }
+                        }
+                    </div>
                 </div>}
+                
             </div>
         )
     }

@@ -68,7 +68,8 @@ class NewDrinkForm extends React.Component {
                             <label htmlFor='strIngredient3'>Ingredient</label>
                             <input id='strIngredient3' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
                         </div>
-                    </div><div className="form-row">
+                    </div>
+                    <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure4'>Measure</label> 
                             <input id='strMeasure4' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
@@ -77,7 +78,8 @@ class NewDrinkForm extends React.Component {
                             <label htmlFor='strIngredient4'>Ingredient</label>
                             <input id='strIngredient4' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
                         </div>
-                    </div><div className="form-row">
+                    </div>
+                    <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure5'>Measure</label> 
                             <input id='strMeasure5' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
@@ -159,25 +161,48 @@ class Edit extends React.Component {
     render() {
         // console.log(this.props.currentDrink)
       return(
-        <div>
+          
+        <div className="card">
             {this.props.currentDrink && 
             <form onSubmit={(event) => this.props.updateCocktail(event, this.props.currentDrink)}>
-            <label htmlFor="strDrink">Drink</label>
-            <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChangeDrink}/>
-            <label htmlFor="strIngredient1">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient1} id="strIngredient1" onChange={this.handleChangeIngredient1}/>
-            <label htmlFor="strIngredient2">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient2} id="strIngredient2" onChange={this.handleChangeIngredient2}/>
-            <label htmlFor="strIngredient3">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient3} id="strIngredient3" onChange={this.handleChangeIngredient3}/>
-            <label htmlFor="Ingredient4">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient4} id="strIngredient4" onChange={this.handleChangeIngredient4}/>
-            <label htmlFor="strIngredient5">Ingredient</label>
-            <input type="text" value={this.props.currentDrink.strIngredient5} id="strIngredient5" onChange={this.handleChangeIngredient5}/>
-            <label htmlFor="strInstructions">Instructions</label>
-            <input type="text" value={this.props.currentDrink.strInstructions} id="strInstructions" onChange={this.handleChangeStrInstructions}/>
-            <label htmlFor="strDrinkThumb">URL</label>
-            <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeStrDrinkThumb}/>
+                <div className="form-row">
+                    <div className="col">
+                        <label htmlFor="strDrink">Drink</label>
+                        <input type="text" value={this.props.currentDrink.strDrink} id="strDrink" onChange={this.handleChangeDrink}/>
+                    </div>
+                    <div className="col">
+                        <label htmlFor="strDrinkThumb">Image Link</label>
+                        <input type="text" value={this.props.currentDrink.strDrinkThumb} id="strDrinkThumb" onChange={this.handleChangeStrDrinkThumb}/>
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="col">
+                        <label htmlFor="strIngredient1">Ingredient</label>
+                        <input type="text" value={this.props.currentDrink.strIngredient1} id="strIngredient1" onChange={this.handleChangeIngredient1}/>
+                    </div>
+                    <div className="col">
+                        <label htmlFor="strIngredient2">Ingredient</label>
+                        <input type="text" value={this.props.currentDrink.strIngredient2} id="strIngredient2" onChange={this.handleChangeIngredient2}/>
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="col">
+                        <label htmlFor="strIngredient3">Ingredient</label>
+                        <input type="text" value={this.props.currentDrink.strIngredient3} id="strIngredient3" onChange={this.handleChangeIngredient3}/>
+                    </div>
+                    <div className="col">
+                        <label htmlFor="Ingredient4">Ingredient</label>
+                        <input type="text" value={this.props.currentDrink.strIngredient4} id="strIngredient4" onChange={this.handleChangeIngredient4}/>
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="col">
+                        <label htmlFor="strIngredient5">Ingredient</label>
+                        <input type="text" value={this.props.currentDrink.strIngredient5} id="strIngredient5" onChange={this.handleChangeIngredient5}/>
+                    </div>
+                </div>
+            <label htmlFor='strInstructions'>Instructions</label>
+            <textarea id='strInstructions' className="form-control" type='text' rows="3" value={this.props.currentDrink.strInstructions} onChange={this.handleChangeStrInstructions}/>
             <input type="submit"/>
             </form>
             }

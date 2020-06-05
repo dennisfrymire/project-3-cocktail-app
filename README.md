@@ -23,7 +23,7 @@ A working full-stack application using the MERN stack that allows users to searc
 
 ## Wireframe
 
-![wire frame] (https://github.com/dfrymire79/project-3-cocktail-app/blob/dev/public/wireframe-project-3.png?raw=true)
+![wire frame] (img src="https://github.com/dfrymire79/project-3-cocktail-app/blob/dev/public/wireframe-project-3.png?raw=true")
 
 ## User Stories
 

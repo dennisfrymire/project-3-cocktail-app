@@ -92,7 +92,7 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strInstructions'>Instructions</label>
                     <textarea id='strInstructions' className="form-control" type='text' rows="3" value={this.state.strInstructions} onChange={this.handleChange}/>
                     
-                    <input type='submit' />
+                    <input type='submit' className="btn btn-secondary"/>
                 </form>
             </div>
                 
@@ -203,7 +203,7 @@ class Edit extends React.Component {
                 </div>
             <label htmlFor='strInstructions'>Instructions</label>
             <textarea id='strInstructions' className="form-control" type='text' rows="3" value={this.props.currentDrink.strInstructions} onChange={this.handleChangeStrInstructions}/>
-            <input type="submit"/>
+            <input type="submit" className="btn btn-secondary"/>
             </form>
             }
             
@@ -324,12 +324,12 @@ class CommunityCocktail extends React.Component {
                             
                             <li>{this.state.currentDrink.strInstructions}</li>
                         </ul>
-                        <button onClick={this.toggleEdit}>Edit Cocktail</button>
+                        <button className="btn btn-secondary" onClick={this.toggleEdit}>Edit Cocktail</button>
                         </div>}
                         {this.state.editCocktail && 
                         <Edit currentDrink={this.state.currentDrink} toggleEdit={this.toggleEdit} updateCocktail={() => this.updateCocktail(event, this.state.currentDrink)}/>
                         }
-                        <button onClick={this.toggleSelectCocktail}>Go back to Community</button>
+                        <button className="btn btn-secondary" onClick={this.toggleSelectCocktail}>Go back to Community</button>
                     </div>
                 }
 
@@ -421,7 +421,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 <form onSubmit={this.handleSubmitIngredient}>
                     <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
                     <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
-                    <input type = "submit" value = "Submit" />
+                    <input type = "submit" value = "Submit" className="btn btn-secondary"/>
                 </form>
                 
                 
@@ -442,7 +442,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 <form onSubmit={this.handleSubmitName}>
                     <label htmlFor="strDrink">Search for a Cocktail by Name</label>
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
-                    <input type = "submit" value = "Submit" />
+                    <input type = "submit" value = "Submit" className="btn btn-secondary"/>
                 </form>
                 {this.state.drinkName.drinks && 
                 this.state.drinkName.drinks.map(
@@ -451,7 +451,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                             <div className="card">
                                 {item.strDrink}
                                 <img src={item.strDrinkThumb} />
-                                <button onClick={() => this.props.displaySearchedCocktail(item)}>See More</button>
+                                <button className="btn btn-secondary" onClick={() => this.props.displaySearchedCocktail(item)}>See More</button>
                             </div>
                         )
                     }
@@ -546,7 +546,7 @@ class App extends React.Component {
                         <p>{this.state.showSearchCocktail.strMeasure5} {this.state.showSearchCocktail.strIngredient5}  </p>
                         <p>{this.state.showSearchCocktail.strInstructions}</p>
                         {/* not sure why, but this on click only works as an anonymous */}
-                    <button onClick={() => this.toggleSearchedCocktail()}>Go Back</button>
+                    <button className="btn btn-secondary" onClick={() => this.toggleSearchedCocktail()}>Go Back</button>
                     </div>
                 }
                 {!this.state.searchedCocktail &&
@@ -556,7 +556,7 @@ class App extends React.Component {
                         <h1 className="text-center">Community Posted Cocktails</h1>
                         <h2>Try these drinks below, and add your own.</h2>
                         <CommunityCocktail  />
-                        <button onClick={this.swapCommunity}>Go Back</button>
+                        <button className="btn btn-secondary" onClick={this.swapCommunity}>Go Back</button>
                         <Footer />
                     </div>
                     }
@@ -568,7 +568,7 @@ class App extends React.Component {
                         </header>
                         
                         <h2>Find your next favorite drink</h2>
-                        <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
+                        <button className="btn btn-secondary" onClick={this.swapCommunity}>Community Posted Cocktails</button>
                         {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
                                 return (
                                     <div className="card">

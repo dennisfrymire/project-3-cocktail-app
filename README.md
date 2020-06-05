@@ -1,13 +1,4 @@
-# project-3-cocktail-app
-
-Possible App Names:
-“Cocktails”
-“High Top”
-“Mixology”/“Mixologist”
-“Elixir”
-"The Typsy Code"
-"React-Tails"
-
+# BarCode - a Cocktail Search and Libary App
 
 ## Concept
 
@@ -52,17 +43,9 @@ As a user, I want to be able to…
 
 - We would like to come back and add user authentication. We didn't feel comfortable tackling that in the time left after we achieved our other goals. 
 
-*** 
 
-### Thoughts from looking at "Highball" app:
 
-“About”: should be minimal - more about the company than how to use the app. The use of the app should be intuitive enough the user can figure it out without instructions. 
-
-### Possible "About" page copy: 
-
-“[App Name] is a full MERN CRUD app created by Mae We Serve You - a collective of software engineering students at General Assembly in the 2020 “Mae” cohort.
-
-Collaborators are:
+## Collaborators are:
 
 Zoe (Luting) Chen
 Dennis Frymire

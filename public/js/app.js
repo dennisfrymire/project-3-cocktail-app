@@ -282,7 +282,7 @@ class CommunityCocktail extends React.Component {
                             )
                         })
                     }
-                    
+
                 </div>}
             </div>
         )
@@ -335,6 +335,21 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
             }, err=> console.log(err))
         })
     }
+
+    handleSubmitAlcoholic = (event) => {
+        event.preventDefault();
+        this.setState({
+            searchURL: this.state.baseURL + this.state.apikey + 'filter.php?a=' + this.state.name
+        }, ()=>{
+            fetch(this.state.searchURL).then(response => response.json())
+            .then((data)=>{
+                this.setState({
+                    drinkName:data
+                })
+            }, err=> console.log(err))
+        })
+    }
+
     render() {
         return(
             <div>

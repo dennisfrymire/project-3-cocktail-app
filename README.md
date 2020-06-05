@@ -6,7 +6,25 @@ Possible App Names:
 “Mixology”/“Mixologist”
 “Elixir”
 
-### User Stories
+## Concept
+
+A working full-stack application using the MERN stack that allows users to search for cocktail recipes from an external API, as well as submit and edit their own recipes to the community database.
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- MongoDB
+- Express
+- React
+- Node.js
+- JSX
+
+## Wireframe
+
+
+## User Stories
 
 As a user, I want to be able to search for cocktails by …
 
@@ -22,7 +40,9 @@ As a user, I want to be able to…
 - edit ingredients and measuring and instructions on how to make
 - make notes about the drink itself (“have tried/not tried yet” option? “Favorite/Not Favorite”? )
 
+## Challenges
 
+## What We Would Like To Revisit
 
 *** 
 

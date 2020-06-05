@@ -385,7 +385,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 )
                 }
                 <form onSubmit={this.handleSubmitName}>
-                    <label htmlFor="strDrink">Search for a Cocktail by Name</label>
+                    <label htmlFor="strDrink">Search for a Cocktail by Ingredient or a Specific Name</label>
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>

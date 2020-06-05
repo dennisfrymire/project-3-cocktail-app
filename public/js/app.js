@@ -27,6 +27,7 @@ class NewDrinkForm extends React.Component {
     render(){
         let image = <img src="https://i.imgur.com/fgqTj3s.jpg" />
         return (
+            <div>
                 <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
                     <label htmlFor='strDrink'>Drink Name</label>
                     <input id='strDrink' type='text' value={this.state.strDrink} onChange={this.handleChange}/>
@@ -56,7 +57,10 @@ class NewDrinkForm extends React.Component {
                     <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
                 </form>
+            </div>
+                
         )
+    
     }
 }
 
@@ -142,6 +146,7 @@ class Edit extends React.Component {
             <input type="submit"/>
             </form>
             }
+            
         </div>
       )
     }
@@ -336,7 +341,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
             }, err=> console.log(err))
         })
     }
-    
+
     render() {
         return(
             <div>
@@ -346,6 +351,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                     <input type = "submit" value = "Submit" />
                 </form>
                 
+                
                 {this.state.drinkIngredient.drinks && 
                 this.state.drinkIngredient.drinks.map(
                     item => {
@@ -353,6 +359,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                             <div>
                                 {item.strDrink}
                                 <img src={item.strDrinkThumb} />
+                            
                             </div>
                     
                         )
@@ -380,7 +387,27 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 {this.state.drinkName.drinks === null &&
                 <h1>Sorry, this drink doesn't exist in our database...yet. Keep coming back to look, or add a drink yourself!</h1>
                 }
+                
             </div>
+        )
+    }
+}
+
+class Footer extends React.Component {
+    render(){
+        return(
+            <div>
+                <p>BarCode is a full MERN CRUD app created by Mae We Serve You - a collective of software engineering students at General Assembly in the 2020 “Mae” cohort.</p>
+                Collaborators are:
+                <ul>
+                    <li>
+                        Zoe (Luting) Chen
+                        Dennis Frymire
+                        Leo Ham
+                        Matt Hart
+                    </li>
+                </ul>
+                </div>
         )
     }
 }
@@ -457,7 +484,7 @@ class App extends React.Component {
                         <h2>Try these drinks below, and add your own.</h2>
                         <CommunityCocktail  />
                         <button onClick={this.swapCommunity}>Go Back</button>
-                        
+                        <Footer />
                     </div>
                     }
 
@@ -483,6 +510,7 @@ class App extends React.Component {
                                         <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                         <p>{drink.strInstructions}</p>
                                         <SearchAPIByDrinkOrIngredient appState={this.state} displaySearchedCocktail={this.displaySearchedCocktail}/>
+                                        <Footer />
                                     </div>
                         
                                 )

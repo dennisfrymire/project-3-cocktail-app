@@ -5,6 +5,9 @@ Possible App Names:
 “High Top”
 “Mixology”/“Mixologist”
 “Elixir”
+"The Typsy Code"
+"React-Tails"
+
 
 ## Concept
 
@@ -43,7 +46,7 @@ As a user, I want to be able to…
 
 ## Challenges
 
-- We discovered the API we chose was somewhat limiting after we got underway. For example, we were able to create separate searches by specific drink name or ingredient, or alcholic or non-alcoholic, but was unable to combine everything into one search. 
+- We discovered the API we chose was somewhat limiting after we got underway. For example, we were able to create separate searches by specific drink name or ingredient, or alcholic or non-alcoholic, but was unable to combine everything into one search. We also found ourselves unable to directly transfer search results from the API into our own database.
 
 ## What We Would Like To Revisit
 
@@ -57,7 +60,7 @@ As a user, I want to be able to…
 
 ### Possible "About" page copy: 
 
-“[App Name] is a full CRUD app created by Mae We Serve You - a small collective of software engineering students at General Assembly in the 2020 “Mae” cohort.
+“[App Name] is a full MERN CRUD app created by Mae We Serve You - a collective of software engineering students at General Assembly in the 2020 “Mae” cohort.
 
 Collaborators are:
 

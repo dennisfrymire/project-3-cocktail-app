@@ -285,12 +285,42 @@ class CommunityCocktail extends React.Component {
                             )
                         })
                     }
-
+                {/* <SearchCommunityByIngredient /> */}
                 </div>}
             </div>
         )
     }
 }
+
+// class SearchCommunityByIngredient extends React.Component{
+//     state = {
+//         returnedDrinks: {}
+//     }
+
+//     handleSubmit = (event) => {
+//         event.preventDefault();
+//         fetch('/cocktails/communitySearch')
+//         .then(response => response.json())
+//         .then(data => {
+//             this.setState({returnedDrinks: data})
+//         })
+//     }
+
+//     render(){
+//         console.log(this.state.returnedDrinks)
+//         return (
+//             <div>
+
+//             <form onSubmit={this.handleSubmit}>
+//                 <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
+//                 <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+//                 <input type = "submit" value = "Submit" />
+//             </form>
+            
+//             </div>
+//         )
+//     }
+// }
 
 class SearchAPIByDrinkOrIngredient extends React.Component {
     state = {
@@ -338,21 +368,6 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
             }, err=> console.log(err))
         })
     }
-
-    handleSubmitAlcoholic = (event) => {
-        event.preventDefault();
-        this.setState({
-            searchURL: this.state.baseURL + this.state.apikey + 'filter.php?a=' + this.state.name
-        }, ()=>{
-            fetch(this.state.searchURL).then(response => response.json())
-            .then((data)=>{
-                this.setState({
-                    drinkName:data
-                })
-            }, err=> console.log(err))
-        })
-    }
-
     render() {
         return(
             <div>
@@ -373,7 +388,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 )
                 }
                 <form onSubmit={this.handleSubmitName}>
-                    <label htmlFor="strDrink">Search for a Cocktail by Ingredient or a Specific Name</label>
+                    <label htmlFor="strDrink">Search for a Cocktail by Name</label>
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>
@@ -420,11 +435,22 @@ class App extends React.Component {
         })
     }
 
+
+    // getData = () => {
+    //     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
+    //     .then(response => response.json())
+    //     .then(data => this.setState({cocktails: data}))
+    // }
+
+    
     swapCommunity = () => {
         this.setState({
             community: !this.state.community
         })
     }
+
+
+
 
     render(){
         return (

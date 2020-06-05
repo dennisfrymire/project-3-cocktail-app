@@ -27,6 +27,7 @@ class NewDrinkForm extends React.Component {
     render(){
         let image = <img src="https://i.imgur.com/fgqTj3s.jpg" />
         return (
+            <div>
                 <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
                     <label htmlFor='strDrink'>Drink Name</label>
                     <input id='strDrink' type='text' value={this.state.strDrink} onChange={this.handleChange}/>
@@ -56,7 +57,10 @@ class NewDrinkForm extends React.Component {
                     <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
                 </form>
+            </div>
+                
         )
+    
     }
 }
 
@@ -142,6 +146,7 @@ class Edit extends React.Component {
             <input type="submit"/>
             </form>
             }
+            
         </div>
       )
     }
@@ -338,7 +343,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
             }, err=> console.log(err))
         })
     }
-    
+
     render() {
         return(
             <div>
@@ -348,6 +353,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                     <input type = "submit" value = "Submit" />
                 </form>
                 
+                
                 {this.state.drinkIngredient.drinks && 
                 this.state.drinkIngredient.drinks.map(
                     item => {
@@ -355,6 +361,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                             <div className="card">
                                 {item.strDrink}
                                 <img src={item.strDrinkThumb} />
+                            
                             </div>
                     
                         )
@@ -373,6 +380,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                             <div className="card1">
                                 {item.strDrink}
                                 <img src={item.strDrinkThumb} />
+                                <button onClick={() => this.props.displaySearchedCocktail(item)}>See More</button>
                             </div>
                         )
                     }
@@ -381,7 +389,27 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 {this.state.drinkName.drinks === null &&
                 <h1>Sorry, this drink doesn't exist in our database...yet. Keep coming back to look, or add a drink yourself!</h1>
                 }
+                
             </div>
+        )
+    }
+}
+
+class Footer extends React.Component {
+    render(){
+        return(
+            <div>
+                <p>BarCode is a full MERN CRUD app created by Mae We Serve You - a collective of software engineering students at General Assembly in the 2020 “Mae” cohort.</p>
+                Collaborators are:
+                <ul>
+                    <li>
+                        Zoe (Luting) Chen
+                        Dennis Frymire
+                        Leo Ham
+                        Matt Hart
+                    </li>
+                </ul>
+                </div>
         )
     }
 }
@@ -394,7 +422,9 @@ class App extends React.Component {
         query: "filter.php?i=",
         ingredient: '',
         searchURL: "",
-        community: false
+        community: false,
+        searchedCocktail: false,
+        showSearchCocktail: {}
     }
 
     componentDidMount(){
@@ -417,51 +447,81 @@ class App extends React.Component {
     }
 
 
+    displaySearchedCocktail = (obj) => {
+        this.setState({
+            searchedCocktail: !this.state.searchedCocktail,
+            showSearchCocktail: obj
+        })
+    }
 
+    toggleSearchedCocktail = () => {
+        this.setState({
+            searchedCocktail: !this.state.searchedCocktail
+        })
+    }
 
     render(){
         return (
             <div className="container">
-                {this.state.community &&
-                <div>
-                    <h1 className="text-center">Community Posted Cocktails</h1>
-                    <h2>Try these drinks below, and add your own.</h2>
-                    <CommunityCocktail  />
-                    <button onClick={this.swapCommunity}>Go Back</button>
-                    
-                </div>
+                {this.state.searchedCocktail &&
+                    <div className="card">
+                    <h3>{this.state.showSearchCocktail.strDrink}</h3>
+                    <img src={this.state.showSearchCocktail.strDrinkThumb}></img>
+                    <p>Ingredients:</p>
+                        <p>{this.state.showSearchCocktail.strMeasure1} {this.state.showSearchCocktail.strIngredient1}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure2} {this.state.showSearchCocktail.strIngredient2}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure3} {this.state.showSearchCocktail.strIngredient3}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure4} {this.state.showSearchCocktail.strIngredient4}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure5} {this.state.showSearchCocktail.strIngredient5}  </p>
+                        <p>{this.state.showSearchCocktail.strInstructions}</p>
+                        {/* not sure why, but this on click only works as an anonymous */}
+                    <button onClick={() => this.toggleSearchedCocktail()}>Go Back</button>
+                    </div>
                 }
-                {this.state.community === false &&
-
-                <div>
-                    <header>
-                    <h1 className="text-center">Bar-Code</h1>
-                    </header>
-                    
-                    <h2>Find your next favorite drink</h2>
-                    <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
-                    {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
-                            return (
-                                <div className="card">
-                                <h3>Try this at your next party:</h3>
-                                <p>{drink.strDrink}</p>
-                                <img src={drink.strDrinkThumb}></img>
-                                <p>Ingredients:</p>
-                                    <p>{drink.strMeasure1} {drink.strIngredient1}  </p>
-                                    <p>{drink.strMeasure2} {drink.strIngredient2}  </p>
-                                    <p>{drink.strMeasure3} {drink.strIngredient3}  </p>
-                                    <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
-                                    <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
-                                    <p>{drink.strInstructions}</p>
-                                    <SearchAPIByDrinkOrIngredient />
-                                </div>
-                    
-                            )
-                        })
+                {!this.state.searchedCocktail &&
+                    <div>
+                    {this.state.community &&
+                    <div>
+                        <h1 className="text-center">Community Posted Cocktails</h1>
+                        <h2>Try these drinks below, and add your own.</h2>
+                        <CommunityCocktail  />
+                        <button onClick={this.swapCommunity}>Go Back</button>
+                        <Footer />
+                    </div>
                     }
-                </div>
+
+                    {this.state.community === false &&
+                    <div>
+                        <header>
+                        <h1 className="text-center">Bar-Code</h1>
+                        </header>
+                        
+                        <h2>Find your next favorite drink</h2>
+                        <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
+                        {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
+                                return (
+                                    <div className="card">
+                                    <h3>Try this at your next party:</h3>
+                                    <p>{drink.strDrink}</p>
+                                    <img src={drink.strDrinkThumb}></img>
+                                    <p>Ingredients:</p>
+                                        <p>{drink.strMeasure1} {drink.strIngredient1}  </p>
+                                        <p>{drink.strMeasure2} {drink.strIngredient2}  </p>
+                                        <p>{drink.strMeasure3} {drink.strIngredient3}  </p>
+                                        <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
+                                        <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
+                                        <p>{drink.strInstructions}</p>
+                                        <SearchAPIByDrinkOrIngredient appState={this.state} displaySearchedCocktail={this.displaySearchedCocktail}/>
+                                        <Footer />
+                                    </div>
+                        
+                                )
+                            })
+                        }
+                    </div>
+                    }
+                    </div>
                 }
-                
             </div>
         )
     }

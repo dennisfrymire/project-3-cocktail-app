@@ -1,10 +1,4 @@
-# project-3-cocktail-app
-
-Possible App Names:
-“Cocktails”
-“High Top”
-“Mixology”/“Mixologist”
-“Elixir”
+# BarCode - a Cocktail Search and Libary App
 
 ## Concept
 
@@ -43,23 +37,15 @@ As a user, I want to be able to…
 
 ## Challenges
 
-- We discovered the API we chose was somewhat limiting after we got underway. For example, we were able to create separate searches by specific drink name or ingredient, or alcholic or non-alcoholic, but was unable to combine everything into one search. 
+- We discovered the API we chose was somewhat limiting after we got underway. For example, we were able to create separate searches by specific drink name or ingredient, or alcholic or non-alcoholic, but was unable to combine everything into one search. We also found ourselves unable to directly transfer search results from the API into our own database.
 
 ## What We Would Like To Revisit
 
 - We would like to come back and add user authentication. We didn't feel comfortable tackling that in the time left after we achieved our other goals. 
 
-*** 
 
-### Thoughts from looking at "Highball" app:
 
-“About”: should be minimal - more about the company than how to use the app. The use of the app should be intuitive enough the user can figure it out without instructions. 
-
-### Possible "About" page copy: 
-
-“[App Name] is a full CRUD app created by Mae We Serve You - a small collective of software engineering students at General Assembly in the 2020 “Mae” cohort.
-
-Collaborators are:
+## Collaborators are:
 
 Zoe (Luting) Chen
 Dennis Frymire

@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
     })
 })
 
+// router.get('/communitySearch', (req, res) => {
+//     Cocktails.find({}, (err, foundCommunityCocktails) => {
+//         res.json(foundCommunityCocktails);
+//     })
+// })
+
 router.get('/:id', (req, res) => {
     Cocktails.findById(req.params.id, (err, foundCocktail) => {
         res.json(foundCocktail);

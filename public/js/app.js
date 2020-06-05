@@ -271,22 +271,53 @@ class CommunityCocktail extends React.Component {
                 <div>
                 <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
                 {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
-                                return (
-                                    <div className="card" style={{width: "105px"}}>
-                                    <h5 className="card-title">{drink.strDrink}</h5>
-                                    <img src={drink.strDrinkThumb}></img>
-                                    <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
-                                    <button onClick={() => this.showCocktail(drink._id)}>Show</button>
-                                    </div>
-                        
-                                )
-                            })
-                        }
+                            return (
+                                <div className="card" style={{width: "105px"}}>
+                                <h5 className="card-title">{drink.strDrink}</h5>
+                                <img src={drink.strDrinkThumb}></img>
+                                <button onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
+                                <button onClick={() => this.showCocktail(drink._id)}>Show</button>
+                                </div>
+                    
+                            )
+                        })
+                    }
+                {/* <SearchCommunityByIngredient /> */}
                 </div>}
             </div>
         )
     }
 }
+
+// class SearchCommunityByIngredient extends React.Component{
+//     state = {
+//         returnedDrinks: {}
+//     }
+
+//     handleSubmit = (event) => {
+//         event.preventDefault();
+//         fetch('/cocktails/communitySearch')
+//         .then(response => response.json())
+//         .then(data => {
+//             this.setState({returnedDrinks: data})
+//         })
+//     }
+
+//     render(){
+//         console.log(this.state.returnedDrinks)
+//         return (
+//             <div>
+
+//             <form onSubmit={this.handleSubmit}>
+//                 <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
+//                 <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+//                 <input type = "submit" value = "Submit" />
+//             </form>
+            
+//             </div>
+//         )
+//     }
+// }
 
 class SearchAPIByDrinkOrIngredient extends React.Component {
     state = {

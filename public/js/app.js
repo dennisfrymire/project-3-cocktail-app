@@ -13,8 +13,7 @@ class NewDrinkForm extends React.Component {
         strIngredient5: '',
         strMeasure5: '',
         strInstructions: '',
-        strDrinkThumb: '',
-        // image: require('https://i.imgur.com/fgqTj3s.jpg')
+        strDrinkThumb: ''
     }
 
     handleChange = (event) => {
@@ -55,7 +54,6 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strInstructions'>Instructions</label>
                     <input id='strInstructions' type='text' value={this.state.strInstructions} onChange={this.handleChange}/>
                     <label htmlFor='strDrinkThumb'>Image Link</label>
-                    {/* <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb === '' ? this.state.image : this.state.strDrinkThumb = this.state.strDrinkThumb} onChange={this.handleChange}/> */}
                     <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
                 </form>
@@ -177,8 +175,6 @@ class CommunityCocktail extends React.Component {
             }
         }).then(response => response.json())
             .then(newDrink => {
-                // newDrink.strDrink = newFormState.strDrink
-                // newDrink.strDrinkThumb = newFormState.strDrinkThumb
                 console.log(newDrink)
                 this.setState({
                     communityCocktails: [...this.state.communityCocktails, newDrink],
@@ -196,7 +192,6 @@ class CommunityCocktail extends React.Component {
                     strInstructions: '',
                     strDrinkThumb: ''
                 })
-                // console.log(this.state.cocktails)
             })
     }
 
@@ -252,7 +247,6 @@ class CommunityCocktail extends React.Component {
         })}
 
     render(){
-        // console.log(this.state.communityCocktails)
         return (
             <div>
                 {this.state.selectCocktail &&
@@ -294,42 +288,12 @@ class CommunityCocktail extends React.Component {
                             )
                         })
                     }
-                {/* <SearchCommunityByIngredient /> */}
                 </div>}
             </div>
         )
     }
 }
 
-// class SearchCommunityByIngredient extends React.Component{
-//     state = {
-//         returnedDrinks: {}
-//     }
-
-//     handleSubmit = (event) => {
-//         event.preventDefault();
-//         fetch('/cocktails/communitySearch')
-//         .then(response => response.json())
-//         .then(data => {
-//             this.setState({returnedDrinks: data})
-//         })
-//     }
-
-//     render(){
-//         console.log(this.state.returnedDrinks)
-//         return (
-//             <div>
-
-//             <form onSubmit={this.handleSubmit}>
-//                 <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
-//                 <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
-//                 <input type = "submit" value = "Submit" />
-//             </form>
-            
-//             </div>
-//         )
-//     }
-// }
 
 class SearchAPIByDrinkOrIngredient extends React.Component {
     state = {
@@ -470,13 +434,6 @@ class App extends React.Component {
         })
     }
 
-
-    // getData = () => {
-    //     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
-    //     .then(response => response.json())
-    //     .then(data => this.setState({cocktails: data}))
-    // }
-
     
     swapCommunity = () => {
         this.setState({
@@ -522,8 +479,6 @@ class App extends React.Component {
                                     <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
                                     <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
                                     <p>{drink.strInstructions}</p>
-                                    {/* <SearchAPIByIngredient /> */}
-                                    {/* this is wiping out everything on the page when a drink is submitted */}
                                     <SearchAPIByDrinkOrIngredient />
                                     <Footer />
                                 </div>

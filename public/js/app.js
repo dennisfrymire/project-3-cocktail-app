@@ -14,6 +14,7 @@ class NewDrinkForm extends React.Component {
         strMeasure5: '',
         strInstructions: '',
         strDrinkThumb: '',
+        image: require('https://i.imgur.com/fgqTj3s.jpg')
     }
 
     handleChange = (event) => {
@@ -23,7 +24,9 @@ class NewDrinkForm extends React.Component {
         })
     }
 
+
     render(){
+        let image = <img src="https://i.imgur.com/fgqTj3s.jpg" />
         return (
                 <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
                     <label htmlFor='strDrink'>Drink Name</label>
@@ -51,7 +54,7 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strInstructions'>Instructions</label>
                     <input id='strInstructions' type='text' value={this.state.strInstructions} onChange={this.handleChange}/>
                     <label htmlFor='strDrinkThumb'>Image Link</label>
-                    <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
+                    <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb === '' ? this.state.image : this.state.strDrinkThumb = this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
                 </form>
         )
@@ -282,12 +285,42 @@ class CommunityCocktail extends React.Component {
                             )
                         })
                     }
-
+                {/* <SearchCommunityByIngredient /> */}
                 </div>}
             </div>
         )
     }
 }
+
+// class SearchCommunityByIngredient extends React.Component{
+//     state = {
+//         returnedDrinks: {}
+//     }
+
+//     handleSubmit = (event) => {
+//         event.preventDefault();
+//         fetch('/cocktails/communitySearch')
+//         .then(response => response.json())
+//         .then(data => {
+//             this.setState({returnedDrinks: data})
+//         })
+//     }
+
+//     render(){
+//         console.log(this.state.returnedDrinks)
+//         return (
+//             <div>
+
+//             <form onSubmit={this.handleSubmit}>
+//                 <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
+//                 <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+//                 <input type = "submit" value = "Submit" />
+//             </form>
+            
+//             </div>
+//         )
+//     }
+// }
 
 class SearchAPIByDrinkOrIngredient extends React.Component {
     state = {
@@ -335,21 +368,6 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
             }, err=> console.log(err))
         })
     }
-
-    handleSubmitAlcoholic = (event) => {
-        event.preventDefault();
-        this.setState({
-            searchURL: this.state.baseURL + this.state.apikey + 'filter.php?a=' + this.state.name
-        }, ()=>{
-            fetch(this.state.searchURL).then(response => response.json())
-            .then((data)=>{
-                this.setState({
-                    drinkName:data
-                })
-            }, err=> console.log(err))
-        })
-    }
-
     render() {
         return(
             <div>
@@ -373,7 +391,11 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 )
                 }
                 <form onSubmit={this.handleSubmitName}>
+<<<<<<< HEAD
                     <label htmlFor="strDrink">Search for a Cocktail by a Specific Name</label>
+=======
+                    <label htmlFor="strDrink">Search for a Cocktail by Name</label>
+>>>>>>> 4918bdd20c4c25526607562797672f62f1bf6bbf
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>
@@ -420,11 +442,22 @@ class App extends React.Component {
         })
     }
 
+
+    // getData = () => {
+    //     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
+    //     .then(response => response.json())
+    //     .then(data => this.setState({cocktails: data}))
+    // }
+
+    
     swapCommunity = () => {
         this.setState({
             community: !this.state.community
         })
     }
+
+
+
 
     render(){
         return (

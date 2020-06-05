@@ -25,6 +25,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     Cocktails.create(req.body, (err, createdCocktail) => {
+        //req.body.strDrinkThumb ==='' ? req.body.strDrinkThumb = 'https://clipartart.com/images/clipart-martini-4.jpg' : req.body.strDrinkThumb = req.body.strDrinkThumb
         res.json(createdCocktail);
     })
 })

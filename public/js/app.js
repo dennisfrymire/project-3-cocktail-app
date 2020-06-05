@@ -354,6 +354,9 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmitIngredient}>
+                    <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
+                    <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
+                    <input type = "submit" value = "Submit" />
                 </form>
                 
                 {this.state.drinkIngredient.drinks && 
@@ -370,7 +373,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 )
                 }
                 <form onSubmit={this.handleSubmitName}>
-                    <label htmlFor="strDrink">Search for a Cocktail by Ingredient or a Specific Name</label>
+                    <label htmlFor="strDrink">Search for a Cocktail by a Specific Name</label>
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>

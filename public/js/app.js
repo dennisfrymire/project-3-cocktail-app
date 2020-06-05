@@ -336,6 +336,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
             }, err=> console.log(err))
         })
     }
+    
     render() {
         return(
             <div>

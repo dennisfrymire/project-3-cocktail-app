@@ -14,7 +14,7 @@ class NewDrinkForm extends React.Component {
         strMeasure5: '',
         strInstructions: '',
         strDrinkThumb: '',
-        image: require('https://i.imgur.com/fgqTj3s.jpg')
+        // image: require('https://i.imgur.com/fgqTj3s.jpg')
     }
 
     handleChange = (event) => {
@@ -54,7 +54,8 @@ class NewDrinkForm extends React.Component {
                     <label htmlFor='strInstructions'>Instructions</label>
                     <input id='strInstructions' type='text' value={this.state.strInstructions} onChange={this.handleChange}/>
                     <label htmlFor='strDrinkThumb'>Image Link</label>
-                    <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb === '' ? this.state.image : this.state.strDrinkThumb = this.state.strDrinkThumb} onChange={this.handleChange}/>
+                    {/* <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb === '' ? this.state.image : this.state.strDrinkThumb = this.state.strDrinkThumb} onChange={this.handleChange}/> */}
+                    <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
                     <input type='submit' />
                 </form>
         )
@@ -158,6 +159,9 @@ class CommunityCocktail extends React.Component {
 
     handleSubmit = (event, newFormState) => {
         event.preventDefault();
+        if(newFormState.strDrinkThumb === ''){
+            newFormState.strDrinkThumb = 'https://i.imgur.com/fgqTj3s.jpg'
+        }
         console.log(newFormState)
         fetch('/cocktails', {
             body: JSON.stringify(newFormState),
@@ -391,11 +395,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 )
                 }
                 <form onSubmit={this.handleSubmitName}>
-<<<<<<< HEAD
                     <label htmlFor="strDrink">Search for a Cocktail by a Specific Name</label>
-=======
-                    <label htmlFor="strDrink">Search for a Cocktail by Name</label>
->>>>>>> 4918bdd20c4c25526607562797672f62f1bf6bbf
                     <input id="name" type="text" value={this.state.name} onChange={this.handleChange}/>
                     <input type = "submit" value = "Submit" />
                 </form>

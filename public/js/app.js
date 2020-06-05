@@ -369,10 +369,8 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmitIngredient}>
-                    <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
-                    <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
-                    <input type = "submit" value = "Submit" />
                 </form>
+                
                 {this.state.drinkIngredient.drinks && 
                 this.state.drinkIngredient.drinks.map(
                     item => {
@@ -381,6 +379,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                                 {item.strDrink}
                                 <img src={item.strDrinkThumb} />
                             </div>
+                    
                         )
                     }
                 )
@@ -403,7 +402,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 )
                 }
                 {this.state.drinkName.drinks === null &&
-                <h1>drink does not exist</h1>
+                <h1>Sorry, this drink doesn't exist in our database...yet. Keep coming back to look, or add a drink yourself!</h1>
                 }
             </div>
         )

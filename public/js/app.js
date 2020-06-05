@@ -262,62 +262,6 @@ class App extends React.Component {
         // this.getData();
     }
 
-
-    getData = () => {
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
-        .then(response => response.json())
-        .then(data => this.setState({cocktails: data}))
-    }
-
-    
-    // handleChange = (event) => {
-    //     // setState is a built-in method of the React library
-    //     this.setState({
-    //         [event.target.id]: event.target.value
-    //     })
-    // }
-
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     this.setState({
-    //         searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.ingredient
-    //     }, () => {
-    //         fetch(this.state.searchURL).then((response) => {
-    //             return response.json();
-
-    //         }).then((data) => {
-    //             console.log(data);
-    //             this.setState({
-    //                 drink: data,
-    //                 ingredient: ''
-    //             })
-    //         }, err => console.log(err));
-    
-    //     })
-    // }
-
-    // handleSubmit = (event, newFormState) => {
-    //     event.preventDefault();
-    //     fetch('/cocktails', {
-    //         body: JSON.stringify(newFormState),
-    //         method: "POST",
-    //         headers: {
-    //             'Accept': 'application/json, text/plain, */*',
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then(response => response.json())
-    //         .then(newDrink => {
-    //             // newDrink.strDrink = newFormState.strDrink
-    //             // newDrink.strDrinkThumb = newFormState.strDrinkThumb
-    //             this.setState({
-    //                 cocktails: {drinks: [...this.state.cocktails.drinks, newDrink]},
-    //                 strDrink: '',
-    //                 strDrinkThumb: ''
-    //             })
-    //             // console.log(this.state.cocktails)
-    //         })
-    // }
-
     swapCommunity = () => {
         this.setState({
             community: !this.state.community

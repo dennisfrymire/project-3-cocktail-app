@@ -282,42 +282,12 @@ class CommunityCocktail extends React.Component {
                             )
                         })
                     }
-                {/* <SearchCommunityByIngredient /> */}
+                    
                 </div>}
             </div>
         )
     }
 }
-
-// class SearchCommunityByIngredient extends React.Component{
-//     state = {
-//         returnedDrinks: {}
-//     }
-
-//     handleSubmit = (event) => {
-//         event.preventDefault();
-//         fetch('/cocktails/communitySearch')
-//         .then(response => response.json())
-//         .then(data => {
-//             this.setState({returnedDrinks: data})
-//         })
-//     }
-
-//     render(){
-//         console.log(this.state.returnedDrinks)
-//         return (
-//             <div>
-
-//             <form onSubmit={this.handleSubmit}>
-//                 <label htmlFor="strDrink">Search for a Cocktail by Ingredient</label>
-//                 <input id="ingredient" type="text" value={this.state.ingredient} onChange={this.handleChange}/>
-//                 <input type = "submit" value = "Submit" />
-//             </form>
-            
-//             </div>
-//         )
-//     }
-// }
 
 class SearchAPIByDrinkOrIngredient extends React.Component {
     state = {
@@ -432,22 +402,11 @@ class App extends React.Component {
         })
     }
 
-
-    // getData = () => {
-    //     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whisky')
-    //     .then(response => response.json())
-    //     .then(data => this.setState({cocktails: data}))
-    // }
-
-    
     swapCommunity = () => {
         this.setState({
             community: !this.state.community
         })
     }
-
-
-
 
     render(){
         return (

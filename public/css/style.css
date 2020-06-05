@@ -7,6 +7,7 @@ body {
     height: 100%;
     width: auto;
     background-size: cover;
+    padding: 5px;
 }
 
 header {
@@ -17,6 +18,10 @@ header {
 
 h1 {
     color: rgb(180, 176, 176);
+}
+
+ul {
+    list-style: none;
 }
 
 .container {

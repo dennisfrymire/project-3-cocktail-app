@@ -35,11 +35,12 @@ ul {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
 }
 
 .card {
+    
     padding: 5px;
     margin: 5px;
 }

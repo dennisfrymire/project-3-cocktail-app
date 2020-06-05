@@ -27,34 +27,69 @@ class NewDrinkForm extends React.Component {
     render(){
         let image = <img src="https://i.imgur.com/fgqTj3s.jpg" />
         return (
-            <div>
+            <div className="card">
                 <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
-                    <label htmlFor='strDrink'>Drink Name</label>
-                    <input id='strDrink' type='text' value={this.state.strDrink} onChange={this.handleChange}/>
-                    <label htmlFor='strMeasure1'>Measure</label> 
-                    <input id='strMeasure1' type='text' value={this.state.strMeasure1} onChange={this.handleChange}/>
-                    <label htmlFor='strIngredient1'>Ingredient</label>
-                    <input id='strIngredient1' type='text' value={this.state.strIngredient1} onChange={this.handleChange}/>
-                    <label htmlFor='strMeasure2'>Measure</label> 
-                    <input id='strMeasure2' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
-                    <label htmlFor='strIngredient2'>Ingredient</label>
-                    <input id='strIngredient2' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
-                    <label htmlFor='strMeasure3'>Measure</label> 
-                    <input id='strMeasure3' type='text' value={this.state.strMeasure3} onChange={this.handleChange}/>
-                    <label htmlFor='strIngredient3'>Ingredient</label>
-                    <input id='strIngredient3' type='text' value={this.state.strIngredient3} onChange={this.handleChange}/>
-                    <label htmlFor='strMeasure4'>Measure</label> 
-                    <input id='strMeasure4' type='text' value={this.state.strMeasure4} onChange={this.handleChange}/>
-                    <label htmlFor='strIngredient4'>Ingredient</label>
-                    <input id='strIngredient4' type='text' value={this.state.strIngredient4} onChange={this.handleChange}/>
-                    <label htmlFor='strMeasure5'>Measure</label> 
-                    <input id='strMeasure5' type='text' value={this.state.strMeasure5} onChange={this.handleChange}/>
-                    <label htmlFor='strIngredient5'>Ingredient</label>
-                    <input id='strIngredient5' type='text' value={this.state.strIngredient5} onChange={this.handleChange}/>
+                    <div className="form-row">
+                        <div className="col">
+                            <label htmlFor='strDrink'>Drink Name</label>
+                            <input id='strDrink' type='text' value={this.state.strDrink} onChange={this.handleChange} />
+                        </div>
+                        <div className="col">
+                            <label htmlFor='strDrinkThumb'>Image Link</label>
+                            <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="col">
+                            <label htmlFor='strMeasure1'>Measure</label> 
+                            <input id='strMeasure1' type='text' value={this.state.strMeasure1} onChange={this.handleChange}/>
+                        </div>
+                        <div className="col">
+                            <label htmlFor='strIngredient1'>Ingredient</label>
+                            <input id='strIngredient1' type='text' value={this.state.strIngredient1} onChange={this.handleChange}/>
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="col">
+                            <label htmlFor='strMeasure2'>Measure</label> 
+                            <input id='strMeasure2' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                        </div>
+                        <div className="col">
+                            <label htmlFor='strIngredient2'>Ingredient</label>
+                            <input id='strIngredient2' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="col">
+                            <label htmlFor='strMeasure3'>Measure</label> 
+                            <input id='strMeasure3' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                        </div>
+                        <div className="col">
+                            <label htmlFor='strIngredient3'>Ingredient</label>
+                            <input id='strIngredient3' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                        </div>
+                    </div><div className="form-row">
+                        <div className="col">
+                            <label htmlFor='strMeasure4'>Measure</label> 
+                            <input id='strMeasure4' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                        </div>
+                        <div className="col">
+                            <label htmlFor='strIngredient4'>Ingredient</label>
+                            <input id='strIngredient4' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                        </div>
+                    </div><div className="form-row">
+                        <div className="col">
+                            <label htmlFor='strMeasure5'>Measure</label> 
+                            <input id='strMeasure5' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                        </div>
+                        <div className="col">
+                            <label htmlFor='strIngredient5'>Ingredient</label>
+                            <input id='strIngredient5' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                        </div>
+                    </div>
                     <label htmlFor='strInstructions'>Instructions</label>
-                    <input id='strInstructions' type='text' value={this.state.strInstructions} onChange={this.handleChange}/>
-                    <label htmlFor='strDrinkThumb'>Image Link</label>
-                    <input id='strDrinkThumb' type='text' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
+                    <textarea id='strInstructions' className="form-control" type='text' rows="3" value={this.state.strInstructions} onChange={this.handleChange}/>
+                    
                     <input type='submit' />
                 </form>
             </div>
@@ -278,12 +313,14 @@ class CommunityCocktail extends React.Component {
                 <NewDrinkForm cocktails={this.state.communityCocktails} handleSubmit={this.handleSubmit}/>
                 {this.state.communityCocktails && this.state.communityCocktails.map((drink, index) => {
                             return (
-                                <div className="card" style={{width: "150px"}}>
+                                <div className="card" style={{width: "250px"}}>
                                     <img src={drink.strDrinkThumb} class="card-img-top"></img>
                                     <div className="card-body">
                                     <h5 className="card-title">{drink.strDrink}</h5>
-                                        <button className="btn btn-primary" onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
-                                        <button className="btn btn-primary" onClick={() => this.showCocktail(drink._id)}>Show</button>
+                                        <div className="btn-group" role="group">
+                                            <button type="button" className="btn btn-secondary" onClick={() => this.deleteCocktail(drink._id, index)}>Delete</button>
+                                            <button type="button" className="btn btn-secondary" onClick={() => this.showCocktail(drink._id)}>Show</button>
+                                        </div>
                                     </div>
                                 </div>
                     
@@ -377,7 +414,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                 this.state.drinkName.drinks.map(
                     item => {
                         return (
-                            <div className="card1">
+                            <div className="card">
                                 {item.strDrink}
                                 <img src={item.strDrinkThumb} />
                                 <button onClick={() => this.props.displaySearchedCocktail(item)}>See More</button>
@@ -398,14 +435,14 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
 class Footer extends React.Component {
     render(){
         return(
-            <div>
+            <div className="card">
                 <p>BarCode is a full MERN CRUD app created by Mae We Serve You - a collective of software engineering students at General Assembly in the 2020 “Mae” cohort.</p>
                 Collaborators are:
                 <ul>
                     <li>
-                        Zoe (Luting) Chen
-                        Dennis Frymire
-                        Leo Ham
+                        Zoe (Luting) Chen,
+                        Dennis Frymire,
+                        Leo Ham,
                         Matt Hart
                     </li>
                 </ul>
@@ -493,7 +530,7 @@ class App extends React.Component {
                     {this.state.community === false &&
                     <div>
                         <header>
-                        <h1 className="text-center">Bar-Code</h1>
+                        <h1 className="text-center">BarCode</h1>
                         </header>
                         
                         <h2>Find your next favorite drink</h2>

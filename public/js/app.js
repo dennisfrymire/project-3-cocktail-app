@@ -371,6 +371,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                             <div>
                                 {item.strDrink}
                                 <img src={item.strDrinkThumb} />
+                                <button onClick={() => this.props.displaySearchedCocktail(item)}>See More</button>
                             </div>
                         )
                     }
@@ -392,7 +393,9 @@ class App extends React.Component {
         query: "filter.php?i=",
         ingredient: '',
         searchURL: "",
-        community: false
+        community: false,
+        searchedCocktail: false,
+        showSearchCocktail: {}
     }
 
     componentDidMount(){
@@ -415,51 +418,80 @@ class App extends React.Component {
     }
 
 
+    displaySearchedCocktail = (obj) => {
+        this.setState({
+            searchedCocktail: !this.state.searchedCocktail,
+            showSearchCocktail: obj
+        })
+    }
 
+    toggleSearchedCocktail = () => {
+        this.setState({
+            searchedCocktail: !this.state.searchedCocktail
+        })
+    }
 
     render(){
         return (
             <div className="container">
-                {this.state.community &&
-                <div>
-                    <h1 className="text-center">Community Posted Cocktails</h1>
-                    <h2>Try these drinks below, and add your own.</h2>
-                    <CommunityCocktail  />
-                    <button onClick={this.swapCommunity}>Go Back</button>
-                    
-                </div>
+                {this.state.searchedCocktail &&
+                    <div className="card">
+                    <h3>{this.state.showSearchCocktail.strDrink}</h3>
+                    <img src={this.state.showSearchCocktail.strDrinkThumb}></img>
+                    <p>Ingredients:</p>
+                        <p>{this.state.showSearchCocktail.strMeasure1} {this.state.showSearchCocktail.strIngredient1}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure2} {this.state.showSearchCocktail.strIngredient2}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure3} {this.state.showSearchCocktail.strIngredient3}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure4} {this.state.showSearchCocktail.strIngredient4}  </p>
+                        <p>{this.state.showSearchCocktail.strMeasure5} {this.state.showSearchCocktail.strIngredient5}  </p>
+                        <p>{this.state.showSearchCocktail.strInstructions}</p>
+                        {/* not sure why, but this on click only works as an anonymous */}
+                    <button onClick={() => this.toggleSearchedCocktail()}>Go Back</button>
+                    </div>
                 }
-                {this.state.community === false &&
-
-                <div>
-                    <header>
-                    <h1 className="text-center">Cocktails</h1>
-                    </header>
-                    
-                    <h2>Find your next favorite drink</h2>
-                    <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
-                    {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
-                            return (
-                                <div className="card">
-                                <h3>Try this at your next party:</h3>
-                                <p>{drink.strDrink}</p>
-                                <img src={drink.strDrinkThumb}></img>
-                                <p>Ingredients:</p>
-                                    <p>{drink.strMeasure1} {drink.strIngredient1}  </p>
-                                    <p>{drink.strMeasure2} {drink.strIngredient2}  </p>
-                                    <p>{drink.strMeasure3} {drink.strIngredient3}  </p>
-                                    <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
-                                    <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
-                                    <p>{drink.strInstructions}</p>
-                                    <SearchAPIByDrinkOrIngredient />
-                                </div>
-                    
-                            )
-                        })
+                {!this.state.searchedCocktail &&
+                    <div>
+                    {this.state.community &&
+                    <div>
+                        <h1 className="text-center">Community Posted Cocktails</h1>
+                        <h2>Try these drinks below, and add your own.</h2>
+                        <CommunityCocktail  />
+                        <button onClick={this.swapCommunity}>Go Back</button>
+                        
+                    </div>
                     }
-                </div>
+
+                    {this.state.community === false &&
+                    <div>
+                        <header>
+                        <h1 className="text-center">Cocktails</h1>
+                        </header>
+                        
+                        <h2>Find your next favorite drink</h2>
+                        <button onClick={this.swapCommunity}>Community Posted Cocktails</button>
+                        {this.state.cocktails.drinks && this.state.cocktails.drinks.map(drink => {
+                                return (
+                                    <div className="card">
+                                    <h3>Try this at your next party:</h3>
+                                    <p>{drink.strDrink}</p>
+                                    <img src={drink.strDrinkThumb}></img>
+                                    <p>Ingredients:</p>
+                                        <p>{drink.strMeasure1} {drink.strIngredient1}  </p>
+                                        <p>{drink.strMeasure2} {drink.strIngredient2}  </p>
+                                        <p>{drink.strMeasure3} {drink.strIngredient3}  </p>
+                                        <p>{drink.strMeasure4} {drink.strIngredient4}  </p>
+                                        <p>{drink.strMeasure5} {drink.strIngredient5}  </p>
+                                        <p>{drink.strInstructions}</p>
+                                        <SearchAPIByDrinkOrIngredient appState={this.state} displaySearchedCocktail={this.displaySearchedCocktail}/>
+                                    </div>
+                        
+                                )
+                            })
+                        }
+                    </div>
+                    }
+                    </div>
                 }
-                
             </div>
         )
     }

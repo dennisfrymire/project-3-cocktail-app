@@ -43,7 +43,11 @@ As a user, I want to be able to…
 
 ## Challenges
 
+- We discovered the API we chose was somewhat limiting after we got underway. For example, we were able to create separate searches by specific drink name or ingredient, or alcholic or non-alcoholic, but was unable to combine everything into one search. 
+
 ## What We Would Like To Revisit
+
+- We would like to come back and add user authentication. We didn't feel comfortable tackling that in the time left after we achieved our other goals. 
 
 *** 
 

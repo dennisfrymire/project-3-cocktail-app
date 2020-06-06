@@ -23,12 +23,28 @@ class NewDrinkForm extends React.Component {
         })
     }
 
+    clearForm = () => {
+        this.setState({
+            strDrink: '',
+            strIngredient1: '',
+            strMeasure1: '',
+            strIngredient2: '',
+            strMeasure2: '',
+            strIngredient3: '',
+            strMeasure3: '',
+            strIngredient4: '',
+            strMeasure4: '',
+            strIngredient5: '',
+            strMeasure5: '',
+            strInstructions: '',
+            strDrinkThumb: '',
+        })
+    }
 
     render(){
-        let image = <img src="https://i.imgur.com/fgqTj3s.jpg" />
         return (
             <div className="card" style={{width: "80vw"}}>
-                <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
+                <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state, this.clearForm())}>
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strDrink'>Drink Name</label>
@@ -238,19 +254,8 @@ class CommunityCocktail extends React.Component {
                 console.log(newDrink)
                 this.setState({
                     communityCocktails: [...this.state.communityCocktails, newDrink],
-                    strDrink: '',
-                    strIngredient1: '',
-                    strMeasure1: '',
-                    strIngredient2: '',
-                    strMeasure2: '',
-                    strIngredient3: '',
-                    strMeasure3: '',
-                    strIngredient4: '',
-                    strMeasure4: '',
-                    strIngredient5: '',
-                    strMeasure5: '',
-                    strInstructions: '',
-                    strDrinkThumb: ''
+                    
+
                 })
             })
     }
@@ -431,7 +436,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                         return (
                             <div className="card">
                                 {item.strDrink}
-                                <img src={item.strDrinkThumb} />
+                                <img src={item.strDrinkThumb} style={{margin: 'auto'}}/>
                             
                             </div>
                     
@@ -450,7 +455,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                         return (
                             <div className="card">
                                 {item.strDrink}
-                                <img src={item.strDrinkThumb} />
+                                <img src={item.strDrinkThumb} style={{margin: 'auto'}} />
                                 <button className="btn btn-secondary" onClick={() => this.props.displaySearchedCocktail(item)}>See More</button>
                             </div>
                         )

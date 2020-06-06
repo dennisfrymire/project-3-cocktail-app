@@ -53,7 +53,11 @@ These roles stayed somewhat consistent through the week, but we all eventually c
 
 - As noted above, we found ourselves having limited availability to meet outside of structured class time. By the end of Wednesday evening's class, we all began jumping into help into each other's designated roles. (But seriously, Leo was the real MVP in figuring out the API search functions.)
 
-- We discovered the API we chose was somewhat limiting after we got underway. For example, we were able to create separate searches by specific drink name or ingredient, or alcholic or non-alcoholic, but was unable to combine everything into one search. The API had different URLs for each time of filter, and some filters brought back very limited info. (For example, searching by ingredient only brings back drink names and images, but not the actual ingredients or measurings.) We also found ourselves unable to directly transfer search results from the API into our own database, which would be ideal for the user in a "real world" scenario.
+- We discovered the API we chose was somewhat limiting after we got underway. For example, we were able to create separate searches by specific drink name or ingredient, or alcholic or non-alcoholic, but was unable to combine everything into one search. The API had different URLs for each time of filter, and some filters brought back very limited info. (For example, searching by ingredient only brings back drink names and images, but not the actual ingredients or measurings.) 
+
+- We found ourselves unable to directly transfer search results from the API into our own database, which would be ideal for the user in a "real world" scenario. 
+
+- We wanted users to be able to filter for alcholic or non-alcholic drinks. That was possible with the API, but again, the information that specific search brought back was limiting.
 
 ## What We Would Like To Revisit
 

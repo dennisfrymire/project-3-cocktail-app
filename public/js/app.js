@@ -62,31 +62,31 @@ class NewDrinkForm extends React.Component {
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure3'>Measure</label> 
-                            <input id='strMeasure3' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                            <input id='strMeasure3' type='text' value={this.state.strMeasure3} onChange={this.handleChange}/>
                         </div>
                         <div className="col">
                             <label htmlFor='strIngredient3'>Ingredient</label>
-                            <input id='strIngredient3' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                            <input id='strIngredient3' type='text' value={this.state.strIngredient3} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure4'>Measure</label> 
-                            <input id='strMeasure4' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                            <input id='strMeasure4' type='text' value={this.state.strMeasure4} onChange={this.handleChange}/>
                         </div>
                         <div className="col">
                             <label htmlFor='strIngredient4'>Ingredient</label>
-                            <input id='strIngredient4' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                            <input id='strIngredient4' type='text' value={this.state.strIngredient4} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure5'>Measure</label> 
-                            <input id='strMeasure5' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                            <input id='strMeasure5' type='text' value={this.state.strMeasure5} onChange={this.handleChange}/>
                         </div>
                         <div className="col">
                             <label htmlFor='strIngredient5'>Ingredient</label>
-                            <input id='strIngredient5' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                            <input id='strIngredient5' type='text' value={this.state.strIngredient5} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <label htmlFor='strInstructions'>Instructions</label>

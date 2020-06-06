@@ -20,12 +20,17 @@ h1 {
     color: rgb(180, 176, 176);
 }
 
+h2 {
+    color: rgb(180, 176, 176);
+}
+
 ul {
     list-style: none;
 }
 
 .container {
-    height: 100vh;
+    
+    height: 100%;
     width: 75%;
     border-style: double;
     border-width: 5px;
@@ -34,7 +39,22 @@ ul {
     
 }
 
+.communityRows {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 img {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
+}
+
+.card {
+    
+    padding: 5px;
+    margin: 5px;
+}
+
+.btn {
+    margin: 5px;
 }

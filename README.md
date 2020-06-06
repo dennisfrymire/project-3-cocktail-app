@@ -1,4 +1,4 @@
-# BarCode - a Cocktail Search and Libary App
+# BarCode - a Cocktail Search and Library App
 
 ## Concept
 

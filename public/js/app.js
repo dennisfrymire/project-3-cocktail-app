@@ -321,7 +321,6 @@ class CommunityCocktail extends React.Component {
                             <li>{this.state.currentDrink.strIngredient3}</li>
                             <li>{this.state.currentDrink.strIngredient4}</li>
                             <li>{this.state.currentDrink.strIngredient5}</li>
-                            
                             <li>{this.state.currentDrink.strInstructions}</li>
                         </ul>
                         <button className="btn btn-secondary" onClick={this.toggleEdit}>Edit Cocktail</button>

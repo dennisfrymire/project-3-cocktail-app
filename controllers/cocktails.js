@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
     })
 })
 
+// router.get('/communitySearch', (req, res) => {
+//     Cocktails.find({}, (err, foundCommunityCocktails) => {
+//         res.json(foundCommunityCocktails);
+//     })
+// })
+
 router.get('/:id', (req, res) => {
     Cocktails.findById(req.params.id, (err, foundCocktail) => {
         res.json(foundCocktail);
@@ -19,6 +25,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     Cocktails.create(req.body, (err, createdCocktail) => {
+        //req.body.strDrinkThumb ==='' ? req.body.strDrinkThumb = 'https://clipartart.com/images/clipart-martini-4.jpg' : req.body.strDrinkThumb = req.body.strDrinkThumb
         res.json(createdCocktail);
     })
 })

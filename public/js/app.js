@@ -321,11 +321,11 @@ class CommunityCocktail extends React.Component {
                         <p>{this.state.currentDrink.strDrink}</p>
                         <img src={this.state.currentDrink.strDrinkThumb}></img>
                         <ul>
-                            <li>{this.state.currentDrink.strIngredient1}</li>
-                            <li>{this.state.currentDrink.strIngredient2}</li>
-                            <li>{this.state.currentDrink.strIngredient3}</li>
-                            <li>{this.state.currentDrink.strIngredient4}</li>
-                            <li>{this.state.currentDrink.strIngredient5}</li>
+                            <li>{this.state.currentDrink.strMeasure1} {this.state.currentDrink.strIngredient1}</li>
+                            <li>{this.state.currentDrink.strMeasure2} {this.state.currentDrink.strIngredient2}</li>
+                            <li>{this.state.currentDrink.strMeasure3} {this.state.currentDrink.strIngredient3}</li>
+                            <li>{this.state.currentDrink.strMeasure4} {this.state.currentDrink.strIngredient4}</li>
+                            <li>{this.state.currentDrink.strMeasure5} {this.state.currentDrink.strIngredient5}</li>
                             
                             <li>{this.state.currentDrink.strInstructions}</li>
                         </ul>

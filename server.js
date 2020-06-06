@@ -1,7 +1,7 @@
 // dependencies
 const express = require('express');
 const mongoose = require('mongoose');
-const methodOverride = require('method-overrride');
+const methodOverride = require('method-override');
 
 // environment variables
 const app = express();

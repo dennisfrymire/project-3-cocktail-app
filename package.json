@@ -1,6 +1,9 @@
 {
   "name": "project-3-cocktail-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "13.8.0"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -20,6 +23,7 @@
   "homepage": "https://github.com/dfrymire79/project-3-cocktail-app#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "method-override": "^3.0.0",
     "mongoose": "^5.9.16"
   }
 }

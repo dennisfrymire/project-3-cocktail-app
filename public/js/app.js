@@ -23,12 +23,28 @@ class NewDrinkForm extends React.Component {
         })
     }
 
+    clearForm = () => {
+        this.setState({
+            strDrink: '',
+            strIngredient1: '',
+            strMeasure1: '',
+            strIngredient2: '',
+            strMeasure2: '',
+            strIngredient3: '',
+            strMeasure3: '',
+            strIngredient4: '',
+            strMeasure4: '',
+            strIngredient5: '',
+            strMeasure5: '',
+            strInstructions: '',
+            strDrinkThumb: '',
+        })
+    }
 
     render(){
-        let image = <img src="https://i.imgur.com/fgqTj3s.jpg" />
         return (
             <div className="card" style={{width: "80vw"}}>
-                <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state)}>
+                <form className='newDrink' onSubmit={(ev) => this.props.handleSubmit(ev, this.state, this.clearForm())}>
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strDrink'>Drink Name</label>
@@ -62,31 +78,31 @@ class NewDrinkForm extends React.Component {
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure3'>Measure</label> 
-                            <input id='strMeasure3' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                            <input id='strMeasure3' type='text' value={this.state.strMeasure3} onChange={this.handleChange}/>
                         </div>
                         <div className="col">
                             <label htmlFor='strIngredient3'>Ingredient</label>
-                            <input id='strIngredient3' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                            <input id='strIngredient3' type='text' value={this.state.strIngredient3} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure4'>Measure</label> 
-                            <input id='strMeasure4' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                            <input id='strMeasure4' type='text' value={this.state.strMeasure4} onChange={this.handleChange}/>
                         </div>
                         <div className="col">
                             <label htmlFor='strIngredient4'>Ingredient</label>
-                            <input id='strIngredient4' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                            <input id='strIngredient4' type='text' value={this.state.strIngredient4} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor='strMeasure5'>Measure</label> 
-                            <input id='strMeasure5' type='text' value={this.state.strMeasure2} onChange={this.handleChange}/>
+                            <input id='strMeasure5' type='text' value={this.state.strMeasure5} onChange={this.handleChange}/>
                         </div>
                         <div className="col">
                             <label htmlFor='strIngredient5'>Ingredient</label>
-                            <input id='strIngredient5' type='text' value={this.state.strIngredient2} onChange={this.handleChange}/>
+                            <input id='strIngredient5' type='text' value={this.state.strIngredient5} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <label htmlFor='strInstructions'>Instructions</label>
@@ -238,19 +254,8 @@ class CommunityCocktail extends React.Component {
                 console.log(newDrink)
                 this.setState({
                     communityCocktails: [...this.state.communityCocktails, newDrink],
-                    strDrink: '',
-                    strIngredient1: '',
-                    strMeasure1: '',
-                    strIngredient2: '',
-                    strMeasure2: '',
-                    strIngredient3: '',
-                    strMeasure3: '',
-                    strIngredient4: '',
-                    strMeasure4: '',
-                    strIngredient5: '',
-                    strMeasure5: '',
-                    strInstructions: '',
-                    strDrinkThumb: ''
+                    
+
                 })
             })
     }
@@ -430,7 +435,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                         return (
                             <div className="card">
                                 {item.strDrink}
-                                <img src={item.strDrinkThumb} />
+                                <img src={item.strDrinkThumb} style={{margin: 'auto'}}/>
                             
                             </div>
                     
@@ -449,7 +454,7 @@ class SearchAPIByDrinkOrIngredient extends React.Component {
                         return (
                             <div className="card">
                                 {item.strDrink}
-                                <img src={item.strDrinkThumb} />
+                                <img src={item.strDrinkThumb} style={{margin: 'auto'}} />
                                 <button className="btn btn-secondary" onClick={() => this.props.displaySearchedCocktail(item)}>See More</button>
                             </div>
                         )

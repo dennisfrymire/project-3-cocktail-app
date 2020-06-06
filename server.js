@@ -1,10 +1,11 @@
 // dependencies
 const express = require('express');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 // environment variables
 const app = express();
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/cocktails';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/barcode-cocktail-app';
 const PORT = process.env.PORT || 3000;
 
 // middleware

@@ -47,7 +47,7 @@ As a user, I want to be able to…
 
 ## Collaborators are:
 
-Zoe (Luting) Chen
-Dennis Frymire
-Leo Ham
-Matt Hart"
+- Zoe (Luting) Chen
+- Dennis Frymire
+- Leo Ham
+- Matt Hart

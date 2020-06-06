@@ -2,7 +2,7 @@
 
 ## Collaborators are:
 
-**Mae We Serve You**
+### Mae We Serve You
 
 - Zoe (Luting) Chen
 - Dennis Frymire

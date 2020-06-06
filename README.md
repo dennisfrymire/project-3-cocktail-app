@@ -1,5 +1,14 @@
 # BarCode - a Cocktail Search and Library App
 
+## Collaborators are:
+
+** Mae We Serve You **
+
+- Zoe (Luting) Chen
+- Dennis Frymire
+- Leo Ham
+- Matt Hart
+
 ## Concept
 
 A working full-stack application using the MERN stack that allows users to search for cocktail recipes from an external API, as well as submit and edit their own recipes to the community database.
@@ -67,9 +76,3 @@ These roles stayed somewhat consistent through the week, but we all eventually c
 
 
 
-## Collaborators are:
-
-- Zoe (Luting) Chen
-- Dennis Frymire
-- Leo Ham
-- Matt Hart

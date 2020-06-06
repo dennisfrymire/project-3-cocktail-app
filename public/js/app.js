@@ -219,7 +219,7 @@ class Edit extends React.Component {
                 <div className="form-row">
                     <div className="col">
                         <label htmlFor="strMeasure1">Measure</label>
-                        <input type="text" value={this.props.currentDrink.strMeasure1} id="strMeasure1" onChange={this.handleMeasure1}/>
+                        <input type="text" value={this.props.currentDrink.strMeasure1} id="strMeasure1" onChange={this.handleChangeMeasure1}/>
                     </div>
                     <div className="col">
                         <label htmlFor="strIngredient1">Ingredient</label>
@@ -229,7 +229,7 @@ class Edit extends React.Component {
                 <div className="form-row">
                     <div className="col">
                         <label htmlFor="strMeasure2">Measure</label>
-                        <input type="text" value={this.props.currentDrink.strMeasure2} id="strMeasure2" onChange={this.handleMeasure2}/>
+                        <input type="text" value={this.props.currentDrink.strMeasure2} id="strMeasure2" onChange={this.handleChangeMeasure2}/>
                     </div>
                     <div className="col">
                         <label htmlFor="strIngredient2">Ingredient</label>
@@ -239,7 +239,7 @@ class Edit extends React.Component {
                 <div className="form-row">
                     <div className="col">
                         <label htmlFor="strMeasure3">Measure</label>
-                        <input type="text" value={this.props.currentDrink.strMeasure3} id="strMeasure3" onChange={this.handleMeasure3}/>
+                        <input type="text" value={this.props.currentDrink.strMeasure3} id="strMeasure3" onChange={this.handleChangeMeasure3}/>
                     </div>
                     <div className="col">
                         <label htmlFor="strIngredient3">Ingredient</label>
@@ -249,7 +249,7 @@ class Edit extends React.Component {
                 <div className="form-row">
                     <div className="col">
                         <label htmlFor="strMeasure4">Measure</label>
-                        <input type="text" value={this.props.currentDrink.strMeasure4} id="strMeasure4" onChange={this.handleMeasure4}/>
+                        <input type="text" value={this.props.currentDrink.strMeasure4} id="strMeasure4" onChange={this.handleChangeMeasure4}/>
                     </div>
                     <div className="col">
                         <label htmlFor="Ingredient4">Ingredient</label>
@@ -260,7 +260,7 @@ class Edit extends React.Component {
                     
                     <div className="col">
                         <label htmlFor="strMeasure5">Measure</label>
-                        <input type="text" value={this.props.currentDrink.strMeasure5} id="strMeasure5" onChange={this.handleMeasure5}/>
+                        <input type="text" value={this.props.currentDrink.strMeasure5} id="strMeasure5" onChange={this.handleChangeMeasure5}/>
                     </div>
                     <div className="col">
                         <label htmlFor="strIngredient5">Ingredient</label>

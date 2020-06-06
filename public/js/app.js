@@ -141,27 +141,27 @@ class Edit extends React.Component {
 
     handleChangeMeasure1 = (event) => {
         this.setState({[event.target.id]:event.target.value})
-        this.props.currentDrink.strIngredient1= event.target.value
+        this.props.currentDrink.strMeasure1= event.target.value
       }
 
     handleChangeMeasure2 = (event) => {
         this.setState({[event.target.id]:event.target.value})
-        this.props.currentDrink.strIngredient1= event.target.value
+        this.props.currentDrink.strMeasure2= event.target.value
       }
     
     handleChangeMeasure3 = (event) => {
         this.setState({[event.target.id]:event.target.value})
-        this.props.currentDrink.strIngredient1= event.target.value
+        this.props.currentDrink.strMeasure3= event.target.value
       }
 
     handleChangeMeasure4 = (event) => {
         this.setState({[event.target.id]:event.target.value})
-        this.props.currentDrink.strIngredient1= event.target.value
+        this.props.currentDrink.strMeasure4= event.target.value
       }
 
     handleChangeMeasure5 = (event) => {
         this.setState({[event.target.id]:event.target.value})
-        this.props.currentDrink.strIngredient1= event.target.value
+        this.props.currentDrink.strMeasure5= event.target.value
       }
 
     handleChangeIngredient1 = (event) => {
